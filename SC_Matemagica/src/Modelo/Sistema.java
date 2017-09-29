@@ -39,27 +39,34 @@ public class Sistema {
             setTmpDificil(scan.nextInt());
     }
     
-    public void alterarConfiguracoes(int tmpFacil, 
-            int tmpMedio, int tmpDificil) throws IOException{
+    public void alterarConfiguracoes(String tmpFacil, 
+            String tmpMedio, String tmpDificil) throws IOException{
         
-            this.setTmpFacil(tmpFacil);
-            this.setTmpFacil(tmpFacil);
-            this.setTmpFacil(tmpFacil);            
+            this.setTmpFacil(Integer.parseInt(tmpFacil));
+            this.setTmpMedio(Integer.parseInt(tmpMedio));
+            this.setTmpDificil(Integer.parseInt(tmpDificil));            
             this.escreverNovoArquivoConfig(tmpFacil, tmpMedio, tmpDificil);
     }   
     
-    public boolean configuracoesValidas(int tmpFacil, 
-            int tmpMedio, int tmpDificil){
+    public boolean configuracoesValidas(String tmpFacil, 
+            String tmpMedio, String tmpDificil){
         
-        if(tmpFacil > 0){} else { return false; }
-        if(tmpMedio > 0){} else { return false; }
-        if(tmpDificil > 0 ){} else { return false; }
+        try {
+            if(Integer.parseInt(tmpFacil) > 0){} else { return false; }
+            if(Integer.parseInt(tmpMedio) > 0){} else { return false; }
+            if(Integer.parseInt(tmpDificil) > 0 ){} else { return false; }
+        }
+        catch(NumberFormatException nfe){
+            // Printar Exception tratada
+            //nfe.printStackTrace();
+            return false;
+        }
         return true;        
     }
     
     
-   public void escreverNovoArquivoConfig(int tmpFacil, 
-            int tmpMedio, int tmpDificil) throws IOException{
+   public void escreverNovoArquivoConfig(String tmpFacil, 
+            String tmpMedio, String tmpDificil) throws IOException{
         
         File novoArq = new File(path_arq_config);
         FileWriter arqWriter = null;

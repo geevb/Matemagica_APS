@@ -187,10 +187,11 @@ public class TelaConfiguracoesAreaEducador extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)
                         .addGap(36, 36, 36)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldFacil, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jTextFieldFacil, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5)))
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,14 +233,20 @@ public class TelaConfiguracoesAreaEducador extends javax.swing.JFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try {
-            controle.alterarConfiguracoes(
-                    Integer.parseInt(jTextFieldFacil.getText()),
-                    Integer.parseInt(jTextFieldMedio.getText()),
-                    Integer.parseInt(jTextFieldDificil.getText())
-            );
+            if(controle.efetuarAlteracoes(
+                    jTextFieldFacil.getText(),
+                    jTextFieldMedio.getText(),
+                    jTextFieldDificil.getText())
+                    ) 
+            { 
+              this.dispose();
+              new TelaPrincipalAreaEducador(controle).setVisible(true);
+            } else {}
+
         } catch (IOException ex) {
-            Logger.getLogger(TelaConfiguracoesAreaEducador.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(TelaConfiguracoesAreaEducador.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
 
