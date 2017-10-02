@@ -23,6 +23,9 @@
 *.rar
 *.tar
 *.zip
+*.properties
+*.config
+*.TXT
 
 # Logs and databases #
 ######################
