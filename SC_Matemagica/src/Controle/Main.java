@@ -1,6 +1,8 @@
 package Controle;
 
 import GUI.TelaPrincipalAreaEducador;
+import GUI.TelaLogin;
+
 import java.io.IOException;
 
 /*
@@ -22,7 +24,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Controle ctr = new Controle();
         //ctr.alterarConfiguracoes(999, 999, 999);
-        new TelaPrincipalAreaEducador(ctr).setVisible(true);
+        new TelaLogin().setVisible(true);
     }
     
 }

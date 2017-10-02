@@ -13,11 +13,10 @@ import javax.swing.JOptionPane;
  */
 public class Mensagens {
     
-    public Mensagens(){};
     
     public void msgConfigInvalida(){
         JOptionPane.showMessageDialog(null,"Configuração inválida!"
-                + " \nPor favor, insira apenas números maiores que zero!");
+                + " \nInsira números positivos maiores que zero!");
     }
     
     
