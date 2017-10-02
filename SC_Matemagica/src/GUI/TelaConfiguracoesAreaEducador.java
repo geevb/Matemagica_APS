@@ -228,18 +228,24 @@ public class TelaConfiguracoesAreaEducador extends javax.swing.JFrame {
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.dispose();
+        
         new TelaPrincipalAreaEducador(controle).setVisible(true);
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        try {
-            controle.alterarConfiguracoes(
-                    Integer.parseInt(jTextFieldFacil.getText()),
-                    Integer.parseInt(jTextFieldMedio.getText()),
-                    Integer.parseInt(jTextFieldDificil.getText())
-            );
+         try {
+            if(controle.efetuarAlteracoes(
+                    jTextFieldFacil.getText(),
+                    jTextFieldMedio.getText(),
+                    jTextFieldDificil.getText())
+                    ) 
+            { 
+              this.dispose();
+              new TelaPrincipalAreaEducador(controle).setVisible(true);
+            } else {}
+
         } catch (IOException ex) {
-            Logger.getLogger(TelaConfiguracoesAreaEducador.class.getName()).log(Level.SEVERE, null, ex);
+           Logger.getLogger(TelaConfiguracoesAreaEducador.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 

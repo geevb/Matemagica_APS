@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,7 +8,6 @@ package Controle;
 
 import Modelo.Sistema;
 import GUI.Mensagens;
-import GUI.TelaLogin;
 import java.io.IOException;
 
 /**
@@ -21,29 +21,38 @@ public class Controle {
     
     public Controle(){
         sis = new Sistema();
+        msg = new Mensagens();
     }
     
     
     public void iniciarAplicacao(){
         //Chamar tela Inicial(login) da aplicação
-        new TelaLogin().setVisible(true);
-        
     }
     
-    public void alterarConfiguracoes(int tmpFacil, 
-            int tmpMedio, int tmpDificil) throws IOException{
-        // Verifica se as novas configurações recebidas são válidas
-        if(sis.configuracoesValidas(tmpFacil, tmpMedio, tmpDificil)){
-           
+    public void alterarConfiguracoes(String tmpFacil, 
+            String tmpMedio, String tmpDificil) throws IOException{
+        // Verifica se as novas configurações recebidas são válidas          
            // Alterar o arquivo de configurações atual.
            sis.alterarConfiguracoes(tmpFacil, tmpMedio, tmpDificil);
-        }        
-        else {
-           // Printar mensagem de configuração inválida.
-           msg.msgConfigInvalida(); 
+    }
+    
+    public boolean configuracoesValidas(String tmpFacil, 
+            String tmpMedio, String tmpDificil){
+        return sis.configuracoesValidas(tmpFacil, tmpMedio, tmpDificil);
+    }
+    
+    public boolean efetuarAlteracoes(String tmpFacil, 
+            String tmpMedio, String tmpDificil) throws IOException{
+        if(sis.configuracoesValidas(tmpFacil, tmpMedio, tmpDificil)){
+            sis.alterarConfiguracoes(tmpFacil, tmpMedio, tmpDificil);
+            return true;
+        } else {
+            msg.msgConfigInvalida();
+            return false;
         }
     }
     
+    public void efetuarLogin(String tipoUsuario, String senha){}
     
     public int getTmpFacil() {
         return sis.getTmpFacil();

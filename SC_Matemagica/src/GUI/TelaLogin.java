@@ -20,7 +20,8 @@ public class TelaLogin extends javax.swing.JFrame {
      */
     Controle controle;
     
-    public TelaLogin() {
+    public TelaLogin(Controle ctr) {
+        this.controle = ctr;
         initComponents();
     }
 

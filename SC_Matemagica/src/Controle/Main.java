@@ -24,7 +24,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Controle ctr = new Controle();
         //ctr.alterarConfiguracoes(999, 999, 999);
-        new TelaLogin().setVisible(true);
+        new TelaLogin(ctr).setVisible(true);
     }
     
 }
