@@ -6,14 +6,12 @@
 package GUI;
 
 import Controle.Controle;
+
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author getuliovb
- */
+
 public class TelaConfiguracoesAreaEducador extends javax.swing.JFrame {
 
     Controle controle;
@@ -227,8 +225,7 @@ public class TelaConfiguracoesAreaEducador extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldDificilActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
-        this.dispose();
-        
+        this.dispose();        
         new TelaPrincipalAreaEducador(controle).setVisible(true);
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
@@ -249,7 +246,8 @@ public class TelaConfiguracoesAreaEducador extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
-
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonSalvar;

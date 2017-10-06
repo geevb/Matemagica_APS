@@ -7,8 +7,11 @@
 package Controle;
 
 import Modelo.Sistema;
-import GUI.Mensagens;
+import GUI.*;
+
 import java.io.IOException;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,7 +34,7 @@ public class Controle {
     
     public void alterarConfiguracoes(String tmpFacil, 
             String tmpMedio, String tmpDificil) throws IOException{
-        // Verifica se as novas configurações recebidas são válidas          
+           // Verifica se as novas configurações recebidas são válidas          
            // Alterar o arquivo de configurações atual.
            sis.alterarConfiguracoes(tmpFacil, tmpMedio, tmpDificil);
     }
@@ -52,8 +55,7 @@ public class Controle {
         }
     }
     
-    public void efetuarLogin(String tipoUsuario, String senha){}
-    
+   
     public int getTmpFacil() {
         return sis.getTmpFacil();
     }
@@ -65,7 +67,23 @@ public class Controle {
     public int getTmpDificil() {
         return sis.getTmpDificil();
     }
-            
-            
+    
+    public boolean isPasswordCorrect(char[] senha) {
+    	return sis.isPasswordCorrect(senha);
+    }
+    
+    public boolean efetuarLogin(String tipoUsuario, char[] senha){
+    	if(tipoUsuario.equals("Jogador")){
+            JOptionPane.showMessageDialog(null, "Bem-vindo ao Matemagica!");
+            // Criar tela area do estudante.
+            return true;
+        } else if(tipoUsuario.equals("Educador") && this.isPasswordCorrect(senha)){
+    		new TelaPrincipalAreaEducador(this).setVisible(true);
+    		return true;
+        } else {
+            msg.msgSenhaInvalida();
+            return false;
+        }
+    }
     
 }

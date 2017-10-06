@@ -7,10 +7,7 @@ package GUI;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author getuliovb
- */
+
 public class Mensagens {
     
     public Mensagens(){};
@@ -19,7 +16,12 @@ public class Mensagens {
         JOptionPane.showMessageDialog(null,"Configuração inválida!"
                 + " \nPor favor, insira apenas números maiores que zero!");
     }
+
+	public void msgSenhaInvalida() {
+		JOptionPane.showMessageDialog(null, "Acesso negado!");		
+	}
     
+	
     
     
 }
