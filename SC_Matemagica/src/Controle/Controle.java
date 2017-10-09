@@ -13,10 +13,8 @@ import java.io.IOException;
 
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author getuliovb
- */
+
+
 public class Controle {
     
     protected Sistema sis;
@@ -29,7 +27,7 @@ public class Controle {
     
     
     public void iniciarAplicacao(){
-        //Chamar tela Inicial(login) da aplicação
+    	new TelaLogin(this).setVisible(true);
     }
     
     public void alterarConfiguracoes(String tmpFacil, 

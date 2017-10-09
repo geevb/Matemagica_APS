@@ -21,7 +21,6 @@ public class Mensagens {
 		JOptionPane.showMessageDialog(null, "Acesso negado!");		
 	}
     
-	
-    
+	    
     
 }
