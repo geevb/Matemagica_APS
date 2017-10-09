@@ -78,9 +78,12 @@ public class Sistema {
             String tmpMedio, String tmpDificil){
         
         try {
-            if(Integer.parseInt(tmpFacil) > 0){} else { return false; }
-            if(Integer.parseInt(tmpMedio) > 0){} else { return false; }
-            if(Integer.parseInt(tmpDificil) > 0 ){} else { return false; }
+            if(Integer.parseInt(tmpFacil) > 0 && tmpFacil.length() <= 3){} 
+            else { return false; }
+            if(Integer.parseInt(tmpMedio) > 0 && tmpMedio.length() <= 3){} 
+            else { return false; }
+            if(Integer.parseInt(tmpDificil) > 0 && tmpDificil.length() <= 3){} 
+            else { return false; }
         }
         catch(NumberFormatException nfe){
             // Printar Exception tratada

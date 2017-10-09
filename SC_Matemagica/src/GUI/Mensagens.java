@@ -14,7 +14,7 @@ public class Mensagens {
     
     public void msgConfigInvalida(){
         JOptionPane.showMessageDialog(null,"Configuração inválida!"
-                + " \nPor favor, insira apenas números maiores que zero!");
+                + " \nPor favor, insira apenas números maiores que zero! (Máx. 999)");
     }
 
 	public void msgSenhaInvalida() {
