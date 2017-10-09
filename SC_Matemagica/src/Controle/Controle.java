@@ -22,7 +22,7 @@ public class Controle {
     protected Sistema sis;
     protected Mensagens msg;
     
-    public Controle(){
+    public Controle() throws IOException{
         sis = new Sistema();
         msg = new Mensagens();
     }

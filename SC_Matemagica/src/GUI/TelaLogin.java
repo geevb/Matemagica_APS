@@ -7,9 +7,13 @@ package GUI;
 
 import Controle.Controle;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Arrays;
+
+import javax.imageio.ImageIO;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 
@@ -17,6 +21,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
 
 	Controle controle;
+	private String path_to_background = "images/telaLogin.png";
     
     public TelaLogin(Controle ctr) {
         this.controle = ctr;
@@ -40,11 +45,17 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelSejaBemVindo = new javax.swing.JLabel();
         jLabelMatemagica = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        //JLabel background = new JLabel();
+        //background.setOpaque(true);
+        //background.setForeground(Color.GREEN);
+        //setContentPane(background);
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Matemágica");
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
+
         
         jLabelSenha.setText("Senha:");
 
@@ -181,3 +192,4 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JPasswordField jTextSenha;
     // End of variables declaration                   
 }
+
