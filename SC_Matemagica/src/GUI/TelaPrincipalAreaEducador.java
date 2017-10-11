@@ -111,30 +111,30 @@ public class TelaPrincipalAreaEducador extends javax.swing.JFrame {
         );
 
         pack();
-    }
+    }// </editor-fold>//GEN-END:initComponents
 
     // BOTAO SAIR
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         this.dispose();
         new TelaLogin(controle).setVisible(true);
-    }
+    }//GEN-LAST:event_jButton3ActionPerformed
     
     // BOTAO GERAR RELATORIO
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     // BOTAO CONFIGURACAO
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
         new TelaConfiguracoesAreaEducador(controle).setVisible(true);
-    }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoAreaConfiguracao;
     private javax.swing.JButton botaroGerarRelatorios;
     private javax.swing.JButton botaoSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-
+    // End of variables declaration//GEN-END:variables
 }
