@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -24,45 +23,35 @@ public class Sistema {
     protected Scanner scan;
     
     private String PATH_ARQ_CONFIG = "config/sis.config";
-    private File PATH_DIR_CONFIG = new File("config");
     //private File FILE_PATH_CONFIG = new File(PATH_ARQ_CONFIG);
     private String configInicial = "1 1 1";
 
     
-    public Sistema(){
-        carregarTempos();        
-    }
+    public Sistema() {}
     
-    public boolean verificarExisteArquivoConfiguracao() {
+    public boolean verificarExisteArquivoConfiguracao(File PATH_DIR_CONFIG) {
     	return PATH_DIR_CONFIG.exists();
     }
     
     public void criarArquivoConfiguracao() {
     	try {
-    		PATH_DIR_CONFIG.mkdir();
-			Files.write(Paths.get(PATH_ARQ_CONFIG), configInicial.getBytes());
+    		Files.write(Paths.get(PATH_ARQ_CONFIG), configInicial.getBytes());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}    	
     }
     
-    private void carregarTempos(){        
-        	if (!verificarExisteArquivoConfiguracao()) {
-        		criarArquivoConfiguracao();
-        	}
+    public void carregarTempos(){
+        try {
+        	scan = new Scanner(new File(PATH_ARQ_CONFIG));
+        } catch (FileNotFoundException e) {
+        		e.printStackTrace();
+        }
         	
-        	try {
-        		scan = new Scanner(new File(PATH_ARQ_CONFIG));
-        
-        		} catch (FileNotFoundException e) {
-        			e.printStackTrace();
-        		}
-        	
-        		setTmpFacil(scan.nextInt());
-        		setTmpMedio(scan.nextInt());
-        		setTmpDificil(scan.nextInt());
-        		
+        	setTmpFacil(scan.nextInt());
+        	setTmpMedio(scan.nextInt());
+        	setTmpDificil(scan.nextInt());	
     }
     
     public void alterarConfiguracoes(String tmpFacil, 

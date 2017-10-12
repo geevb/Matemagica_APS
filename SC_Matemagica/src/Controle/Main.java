@@ -14,7 +14,7 @@ public class Main {
      */
     public static void main(String[] args) throws IOException {
         Controle ctr = new Controle();
-        ctr.iniciarAplicacao();
+        //ctr.iniciarAplicacao();
     }
     
 }
