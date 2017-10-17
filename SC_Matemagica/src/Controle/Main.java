@@ -1,19 +1,18 @@
 package Controle;
 
-import java.io.IOException;
-
+import Modelo.Jogador;
 
 
 
 
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     * @throws java.io.IOException
-     */
-    public static void main(String[] args) throws IOException {
+
+    public static void main(String[] args) {
         Controle ctr = new Controle();
+        Jogador garotao = new Jogador();
+        ctr.fluxoRanking(garotao, 1);
+        ctr.printarConteudoRanking(1);
         //ctr.iniciarAplicacao();
     }
     

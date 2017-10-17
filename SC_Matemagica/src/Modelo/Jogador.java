@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class Jogador implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	protected String nome = "";
-	protected int pontuacao = 0;
+	protected String nome = "Jogador 3";
+	protected int pontuacao = 102;
 	
 	public Jogador() {}
 	

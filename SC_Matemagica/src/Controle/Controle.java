@@ -6,8 +6,7 @@
  */
 package Controle;
 
-import Modelo.Ranking;
-import Modelo.Sistema;
+import Modelo.*;
 import GUI.*;
 
 import java.io.File;
@@ -23,7 +22,7 @@ public class Controle {
     protected Mensagens msg;
     protected Ranking rnk;
     
-    public Controle() throws IOException{
+    public Controle() {
 
         this.sis = new Sistema();
         this.msg = new Mensagens();
@@ -33,7 +32,7 @@ public class Controle {
         carregarInformacoes();
     }
     
-    ///////////////////// MÉTODOS CONTROLE /////////////////////
+    ///////////////////// CONTROLE /////////////////////
     private void verificarSePastasObrigatoriasExistem() {
     	/* Pastas obrigatórias
     	 * 
@@ -42,11 +41,14 @@ public class Controle {
     	 */
     	File PATH_DIR_CONFIG = new File("config");
     	File PATH_DIR_RANKINGS = new File("rankings");
+    	
+    	// Verificação de pastas existentes
     	if (!PATH_DIR_CONFIG.exists()) {
     		PATH_DIR_CONFIG.mkdir();
     		sis.criarArquivoConfiguracao();
 
     	}
+    	
     	if (!PATH_DIR_RANKINGS.exists()) {
     		PATH_DIR_RANKINGS.mkdir();
     		rnk.criarArquivosDeRankings();
@@ -62,15 +64,39 @@ public class Controle {
 
     
     
+    
+    //////////////////////////// GUI ////////////////////////////
     public void iniciarAplicacao(){
     	new TelaLogin(this).setVisible(true);
     }
     
+    ////////////////////////////////////////////////////////////
 
     
     
+    
+    
+    
+    
+    ////////////////////////// RANKING //////////////////////////
+    
+    public void fluxoRanking(Jogador jogador, int cod_ranking) {
+    	rnk.fluxoRanking(jogador, cod_ranking);    	
+    }
+    
+    public void printarConteudoRanking(int cod_ranking) {
+    	rnk.printarConteudoRankings(cod_ranking);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    
 
-    ///////////////////// MÉTODOS SISTEMA /////////////////////
+    
+    
+    
+    
+    
+    ///////////////////// SISTEMA /////////////////////
     public void alterarConfiguracoes(String tmpFacil, 
             String tmpMedio, String tmpDificil) throws IOException{
            // Verifica se as novas configurações recebidas são válidas          

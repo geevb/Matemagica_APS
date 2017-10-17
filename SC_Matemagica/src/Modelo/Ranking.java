@@ -15,15 +15,18 @@ import java.io.Serializable;
 
 public class Ranking implements Serializable {
 	
+
+	private static final long serialVersionUID = 1L;
+	
 	protected ArrayList<Jogador> rnkSoma;
 	protected ArrayList<Jogador> rnkSubtracao;
 	protected ArrayList<Jogador> rnkMultiplicacao;
 	protected ArrayList<Jogador> rnkDivisao;
 	
-	protected String PATH_RNK_SOMA = "rankings/rankingSoma";
-	protected String PATH_RNK_SUBTRACAO = "rankings/rankingSubtracao";
-	protected String PATH_RNK_MULTIPLICACAO = "rankings/rankingMultiplicacao";
-	protected String PATH_RNK_DIVISAO = "rankings/rankingDivisao";
+	protected final String PATH_RNK_SOMA = "rankings/rankingSoma";
+	protected final String PATH_RNK_SUBTRACAO = "rankings/rankingSubtracao";
+	protected final String PATH_RNK_MULTIPLICACAO = "rankings/rankingMultiplicacao";
+	protected final String PATH_RNK_DIVISAO = "rankings/rankingDivisao";
 	
 	
 	public Ranking() {}
@@ -53,6 +56,7 @@ public class Ranking implements Serializable {
 			ObjectOutputStream oo = new ObjectOutputStream(fo);
 			
 			oo.writeObject(arrayJogador);
+			oo.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -63,23 +67,22 @@ public class Ranking implements Serializable {
 		
 	}
 	
-	private void atualizarRankings() {
-//		try {
-//			f = new FileOutputStream(new File(".txt"));
-//			ObjectOutputStream o = new ObjectOutputStream(f);
-//			
-//			o.writeObject(rnkSoma);
-//			o.writeObject(rnkSubtracao);
-//			o.writeObject(rnkMultiplicacao);
-//			o.writeObject(rnkDivisao);
-//			
-//			
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
-//		
+	private void atualizarRanking(int cod_ranking) {
+		try {
+			//File ranking = new File(retornarRankingDoCodigo(cod_ranking));
+			FileOutputStream f = new FileOutputStream(
+					new File(retornarCaminhoDoRanking(cod_ranking)));
+			ObjectOutputStream o = new ObjectOutputStream(f);
+			
+			o.writeObject(retornarRankingDoCodigo(cod_ranking));
+			o.close();
+			
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -107,32 +110,45 @@ public class Ranking implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
 		return tmpArray;
 
 	}
 
 	public void fluxoRanking(Jogador jogador, int cod_ranking) {
 		
+			
 		// Verificar se o jogador entrar no Ranking respectivo ao código do ranking recebido
-		int posicaoDoNovoJogador = entraNoRanking(jogador, retornarRankingDoCodigo(cod_ranking));
+		int posicaoDoNovoJogador = entraNoRanking(jogador, cod_ranking);
 		if(posicaoDoNovoJogador != -1) {
 			//Adicionar jogador ao respectivo ranking.
-			adicionarAoRanking(jogador, 
-							   retornarRankingDoCodigo(cod_ranking), 
-					           posicaoDoNovoJogador);
-		} else {}
+			adicionarAoRanking(jogador,
+							   cod_ranking,
+							   posicaoDoNovoJogador);
+		} else {
+			// Jogador não entra no ranking
+		}
+		
+		//carregarRankings();
+		
+	}
+
+	public void printarConteudoRankings(int cod_ranking) {
+		ArrayList<Jogador> tmpArray = retornarRankingDoCodigo(cod_ranking);		
+		for ( Jogador i : tmpArray ) {
+			System.out.println(i.nome + " " + i.pontuacao);
+		}
 		
 	}
 	
-	public void adicionarAoRanking(Jogador jogador, ArrayList<Jogador> ranking, int posicao) {
-		if(ranking.isEmpty()) {ranking.add(posicao, jogador);}
-		else {
-			ranking.add(posicao, jogador);
-		}
+	public void adicionarAoRanking(Jogador jogador, int cod_ranking, int posicao) {
+		retornarRankingDoCodigo(cod_ranking).add(posicao, jogador);
 		//Corta jogadores que ultrapassem o tamanho de 5 pesoas no ranking
-		ranking.subList(5, ranking.size()).clear();
-		atualizarRankings();
+		if (retornarRankingDoCodigo(cod_ranking).size() > 5) {
+			retornarRankingDoCodigo(cod_ranking).subList(5, 
+					retornarRankingDoCodigo(cod_ranking).size()).clear();
+		}
+		atualizarRanking(cod_ranking);
 	}
 	
 	public ArrayList<Jogador> retornarRankingDoCodigo(int cod_ranking) {
@@ -149,16 +165,21 @@ public class Ranking implements Serializable {
 		else { return rnkDivisao; }
 	}
 	
+	public String retornarCaminhoDoRanking(int cod_ranking) {
+		if (cod_ranking == 1) { return PATH_RNK_SOMA; }			
+		else if (cod_ranking == 2) { return PATH_RNK_SUBTRACAO; }
+		else if (cod_ranking == 3) { return PATH_RNK_MULTIPLICACAO; }
+		else { return PATH_RNK_DIVISAO; }		
+	}
+	
 	//Retorna se o jogador entra no ranking com a sua futura posicao.
 	//Caso não entre, retorna -1
-	public int entraNoRanking(Jogador jogador, ArrayList<Jogador> ranking) {
+	public int entraNoRanking(Jogador jogador, int cod_ranking) {		
 		
+		if(retornarRankingDoCodigo(cod_ranking).isEmpty()) { return 0; }
 		
-		if(ranking.isEmpty()) { return 0; }
-		
-		for(int i=0; i < ranking.size(); i++) {
-			System.out.println("Pontuacao: " + ranking.get(i).getPontuacao());
-			if (jogador.getPontuacao() > ranking.get(i).getPontuacao()) {
+		for(int i=0; i < retornarRankingDoCodigo(cod_ranking).size(); i++) {
+			if (jogador.getPontuacao() > retornarRankingDoCodigo(cod_ranking).get(i).getPontuacao()) {
 				return i;				
 			}
 		}
