@@ -15,7 +15,6 @@ import java.io.Serializable;
 
 public class Ranking implements Serializable {
 	
-
 	private static final long serialVersionUID = 1L;
 	
 	protected ArrayList<Jogador> rnkSoma;
@@ -23,10 +22,10 @@ public class Ranking implements Serializable {
 	protected ArrayList<Jogador> rnkMultiplicacao;
 	protected ArrayList<Jogador> rnkDivisao;
 	
-	protected final String PATH_RNK_SOMA = "rankings/rankingSoma";
-	protected final String PATH_RNK_SUBTRACAO = "rankings/rankingSubtracao";
-	protected final String PATH_RNK_MULTIPLICACAO = "rankings/rankingMultiplicacao";
-	protected final String PATH_RNK_DIVISAO = "rankings/rankingDivisao";
+	private final String PATH_RNK_SOMA = "rankings/rankingSoma";
+	private final String PATH_RNK_SUBTRACAO = "rankings/rankingSubtracao";
+	private final String PATH_RNK_MULTIPLICACAO = "rankings/rankingMultiplicacao";
+	private final String PATH_RNK_DIVISAO = "rankings/rankingDivisao";
 	
 	
 	public Ranking() {}
@@ -185,7 +184,5 @@ public class Ranking implements Serializable {
 		}
 		return -1;
 	}
-
-
 
 }
