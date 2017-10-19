@@ -136,14 +136,22 @@ public class Controle {
     	return sis.isPasswordCorrect(senha);
     }
 
+    public void iniciarAreaEducador() {
+    	new TelaPrincipalAreaEducador(this).setVisible(true);
+    }
+    
+    public void iniciarAreaAluno() {
+    	// Iniciar área do aluno
+    }
+    
     public boolean efetuarLogin(String tipoUsuario, char[] senha){
 
     	if(tipoUsuario.equals("Jogador")){
-            JOptionPane.showMessageDialog(null, "Bem-vindo ao Matemagica!");
-            // Criar tela area do estudante.
+            msg.msgBemVindo();
+            iniciarAreaAluno();
             return true;
         } else if(tipoUsuario.equals("Educador") && this.isPasswordCorrect(senha)){
-    		new TelaPrincipalAreaEducador(this).setVisible(true);
+        	iniciarAreaEducador();
     		return true;
         } else {
             msg.msgSenhaInvalida();

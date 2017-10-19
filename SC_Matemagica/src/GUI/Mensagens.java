@@ -21,6 +21,8 @@ public class Mensagens {
 		JOptionPane.showMessageDialog(null, "Acesso negado!");		
 	}
     
-	    
+	public void msgBemVindo() {
+		JOptionPane.showMessageDialog(null,"Seja bem vindo ao Matemágica!");		
+	}
     
 }

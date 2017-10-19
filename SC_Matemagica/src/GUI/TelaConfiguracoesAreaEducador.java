@@ -76,24 +76,6 @@ public class TelaConfiguracoesAreaEducador extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Ubuntu", 1, 24)); // NOI18N
         jLabel7.setText("Difícil:");
 
-        jTextFieldFacil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldFacilActionPerformed(evt);
-            }
-        });
-
-        jTextFieldMedio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldMedioActionPerformed(evt);
-            }
-        });
-
-        jTextFieldDificil.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDificilActionPerformed(evt);
-            }
-        });
-
         jLabel5.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jLabel5.setText("segundos.");
 
@@ -211,18 +193,6 @@ public class TelaConfiguracoesAreaEducador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextFieldFacilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFacilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldFacilActionPerformed
-
-    private void jTextFieldMedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldMedioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldMedioActionPerformed
-
-    private void jTextFieldDificilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDificilActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDificilActionPerformed
 
     private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
         this.dispose();        
