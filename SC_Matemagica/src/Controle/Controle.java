@@ -11,6 +11,7 @@ import GUI.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
@@ -141,13 +142,13 @@ public class Controle {
     }
     
     public void iniciarAreaAluno() {
-    	// Iniciar área do aluno
+    	new TelaPrincipalAreaAluno(this).setVisible(true);
     }
     
     public boolean efetuarLogin(String tipoUsuario, char[] senha){
 
     	if(tipoUsuario.equals("Jogador")){
-            msg.msgBemVindo();
+            //msg.msgBemVindo();
             iniciarAreaAluno();
             return true;
         } else if(tipoUsuario.equals("Educador") && this.isPasswordCorrect(senha)){
@@ -159,5 +160,21 @@ public class Controle {
         }
     }
     ///////////////////////////////////////////////////////////
+
+	public ArrayList<Jogador> getRankingSoma() {
+		return rnk.getRankingSoma();
+	}
+
+	public ArrayList<Jogador> getRankingSubtracao() {
+		return rnk.getRankingSubtracao();
+	}
+
+	public ArrayList<Jogador> getRankingMultiplicacao() {
+		return rnk.getRankingMultipliacao();
+	}
+
+	public ArrayList<Jogador> getRankingDivisao() {
+		return rnk.getRankingDivisao();
+	}
     
 }

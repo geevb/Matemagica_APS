@@ -32,8 +32,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" alignment="0" min="-2" pref="414" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="515" max="-2" attributes="0"/>
+                          <Component id="jLabelAprendaAqui" alignment="0" min="-2" pref="414" max="-2" attributes="0"/>
+                          <Component id="jLabelOperacaoDesejada" min="-2" pref="515" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -77,9 +77,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" pref="78" max="-2" attributes="0"/>
+              <Component id="jLabelAprendaAqui" min="-2" pref="78" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" pref="48" max="-2" attributes="0"/>
+              <Component id="jLabelOperacaoDesejada" min="-2" pref="48" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" max="-2" attributes="0">
                   <Component id="jButtonSoma" alignment="3" min="-2" pref="65" max="-2" attributes="0"/>
@@ -107,7 +107,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="jLabelAprendaAqui">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="48" style="3"/>
@@ -115,7 +115,7 @@
         <Property name="text" type="java.lang.String" value="Aprenda aqui!"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="jLabelOperacaoDesejada">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="30" style="2"/>
@@ -130,6 +130,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Soma (+)"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSomaActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonSubtracao">
       <Properties>
@@ -138,6 +141,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Subtra&#xe7;&#xe3;o (-)"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSubtracaoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonMultiplicacao">
       <Properties>
@@ -146,6 +152,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Multiplica&#xe7;&#xe3;o (x)"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonMultiplicacaoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonDivisao">
       <Properties>
@@ -185,6 +194,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Sair"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSairActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

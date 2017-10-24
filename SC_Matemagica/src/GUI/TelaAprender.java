@@ -5,16 +5,18 @@
  */
 package GUI;
 
+import Controle.Controle;
+
 /**
  *
  * @author geevb
  */
 public class TelaAprender extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaAprender
-     */
-    public TelaAprender() {
+	Controle controle;
+	
+    public TelaAprender(Controle ctr) {
+    	this.controle = ctr;
         initComponents();
     }
 
@@ -27,8 +29,8 @@ public class TelaAprender extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelAprendaAqui = new javax.swing.JLabel();
+        jLabelOperacaoDesejada = new javax.swing.JLabel();
         jButtonSoma = new javax.swing.JButton();
         jButtonSubtracao = new javax.swing.JButton();
         jButtonMultiplicacao = new javax.swing.JButton();
@@ -43,20 +45,35 @@ public class TelaAprender extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(800, 600));
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 3, 48)); // NOI18N
-        jLabel1.setText("Aprenda aqui!");
+        jLabelAprendaAqui.setFont(new java.awt.Font("Dialog", 3, 48)); // NOI18N
+        jLabelAprendaAqui.setText("Aprenda aqui!");
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 2, 30)); // NOI18N
-        jLabel2.setText("Aperte na operação desejada:");
+        jLabelOperacaoDesejada.setFont(new java.awt.Font("Dialog", 2, 30)); // NOI18N
+        jLabelOperacaoDesejada.setText("Aperte na operação desejada:");
 
         jButtonSoma.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jButtonSoma.setText("Soma (+)");
+        jButtonSoma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSomaActionPerformed(evt);
+            }
+        });
 
         jButtonSubtracao.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jButtonSubtracao.setText("Subtração (-)");
+        jButtonSubtracao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSubtracaoActionPerformed(evt);
+            }
+        });
 
         jButtonMultiplicacao.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jButtonMultiplicacao.setText("Multiplicação (x)");
+        jButtonMultiplicacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonMultiplicacaoActionPerformed(evt);
+            }
+        });
 
         jButtonDivisao.setFont(new java.awt.Font("Dialog", 1, 15)); // NOI18N
         jButtonDivisao.setText("Divisão (/)");
@@ -75,6 +92,11 @@ public class TelaAprender extends javax.swing.JFrame {
         jLabelExemplos.setText("Exemplos");
 
         jButtonSair.setText("Sair");
+        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,8 +107,8 @@ public class TelaAprender extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelAprendaAqui, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelOperacaoDesejada, javax.swing.GroupLayout.PREFERRED_SIZE, 515, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 11, Short.MAX_VALUE)
@@ -119,9 +141,9 @@ public class TelaAprender extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelAprendaAqui, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabelOperacaoDesejada, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                     .addComponent(jButtonSoma, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,51 +171,34 @@ public class TelaAprender extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonDivisaoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaAprender.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaAprender.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaAprender.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaAprender.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void jButtonSomaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSomaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSomaActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaAprender().setVisible(true);
-            }
-        });
-    }
+    private void jButtonSubtracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSubtracaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonSubtracaoActionPerformed
 
+    private void jButtonMultiplicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMultiplicacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonMultiplicacaoActionPerformed
+
+    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+        new TelaPrincipalAreaAluno(controle).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonSairActionPerformed
+
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonDivisao;
     private javax.swing.JButton jButtonMultiplicacao;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JButton jButtonSoma;
     private javax.swing.JButton jButtonSubtracao;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelAprendaAqui;
     private javax.swing.JLabel jLabelExemplos;
     private javax.swing.JLabel jLabelExplicacao;
+    private javax.swing.JLabel jLabelOperacaoDesejada;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables

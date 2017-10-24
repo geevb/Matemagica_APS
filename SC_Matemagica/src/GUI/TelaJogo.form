@@ -243,6 +243,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="999"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonPrimeiraOpActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonSegundaOp">
       <Properties>
@@ -251,6 +254,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="999"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSegundaOpActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonTerceiraOp">
       <Properties>
@@ -259,6 +265,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="999"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonTerceiraOpActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonQuartaOp">
       <Properties>
@@ -267,6 +276,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="999"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonQuartaOpActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -185,4 +185,20 @@ public class Ranking implements Serializable {
 		return -1;
 	}
 
+	public ArrayList<Jogador> getRankingSoma() {
+		return rnkSoma;
+	}
+
+	public ArrayList<Jogador> getRankingSubtracao() {
+		return rnkSubtracao;
+	}
+
+	public ArrayList<Jogador> getRankingMultipliacao() {
+		return rnkMultiplicacao;
+	}
+
+	public ArrayList<Jogador> getRankingDivisao() {
+		return rnkDivisao;
+	}
+
 }

@@ -22,11 +22,15 @@ public class TelaLogin extends javax.swing.JFrame {
 
 	Controle controle;
 	private String path_to_background = "images/telaLogin.png";
+	
+	public TelaLogin() {
+		initComponents();
+	};
     
     public TelaLogin(Controle ctr) {
         this.controle = ctr;
         initComponents();
-    }
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.
