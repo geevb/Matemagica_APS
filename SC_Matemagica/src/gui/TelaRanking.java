@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui;
 
 import java.util.ArrayList;
 
-import Controle.Controle;
 import Modelo.Jogador;
+import controle.Controle;
 
 public class TelaRanking extends javax.swing.JFrame {
 
@@ -71,14 +71,14 @@ public class TelaRanking extends javax.swing.JFrame {
             }
         });
 
-        jButtonSubtracao.setText("Subtração (-)");
+        jButtonSubtracao.setText("Subtracao (-)");
         jButtonSubtracao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSubtracaoActionPerformed(evt);
             }
         });
 
-        jButtonMultiplicacao.setText("Multiplicação (x)");
+        jButtonMultiplicacao.setText("Multiplicacao (x)");
         jButtonMultiplicacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonMultiplicacaoActionPerformed(evt);
@@ -120,25 +120,25 @@ public class TelaRanking extends javax.swing.JFrame {
             }
         });
 
-        jLabelNomePriJog.setText("");
+        jLabelNomePriJog.setText("jLabel10");
 
-        jLabelNomeSegJog.setText("");
+        jLabelNomeSegJog.setText("jLabel11");
 
-        jLabelNomeTerJog.setText("");
+        jLabelNomeTerJog.setText("jLabel12");
 
-        jLabelNomeQuarJog.setText("");
+        jLabelNomeQuarJog.setText("jLabel13");
 
-        jLabelNomeQuinJog.setText("");
+        jLabelNomeQuinJog.setText("jLabel14");
 
-        jLabelPontosPriJog.setText("");
+        jLabelPontosPriJog.setText("jLabel15");
 
-        jLabelPontosSegJog.setText("");
+        jLabelPontosSegJog.setText("jLabel16");
 
-        jLabelPontosTerJog.setText("");
+        jLabelPontosTerJog.setText("jLabel17");
 
-        jLabelPontosQuarJog.setText("");
+        jLabelPontosQuarJog.setText("jLabel18");
 
-        jLabelPontosQuinJog.setText("");
+        jLabelPontosQuinJog.setText("jLabel19");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -4,18 +4,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controle;
+package controle;
 
-import Modelo.*;
-import GUI.*;
+import gui.Mensagens;
+import gui.TelaLogin;
+import gui.TelaPrincipalAreaAluno;
+import gui.TelaPrincipalAreaEducador;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
-
+import Modelo.Jogador;
+import Modelo.Ranking;
+import Modelo.Sistema;
 
 public class Controle {
     

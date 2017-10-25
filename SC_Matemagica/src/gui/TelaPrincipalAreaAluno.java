@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package GUI;
+package gui;
 
-import Controle.Controle;
-import GUI.*;
+import controle.Controle;
 
 
 public class TelaPrincipalAreaAluno extends javax.swing.JFrame {

@@ -1,7 +1,9 @@
 package Modelo;
 
-import Modelo.Jogador;
 import java.util.ArrayList;
+
+import Modelo.Jogador;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
