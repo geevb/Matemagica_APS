@@ -134,7 +134,8 @@ public class TelaPrincipalAreaAluno extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAprenderActionPerformed
 
     private void jButtonJogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonJogarActionPerformed
-        // TODO add your handling code here:
+        new TelaConfigurarPartida(controle).setVisible(true);
+        this.dispose();// TODO add your handling code here:
     }//GEN-LAST:event_jButtonJogarActionPerformed
 
     private void jButtonRankingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRankingActionPerformed

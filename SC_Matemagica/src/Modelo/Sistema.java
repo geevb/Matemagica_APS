@@ -37,7 +37,6 @@ public class Sistema {
     	try {
     		Files.write(Paths.get(PATH_ARQ_CONFIG), configInicial.getBytes());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}    	
     }
