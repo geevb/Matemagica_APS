@@ -14,6 +14,9 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
     public TelaConfigurarPartida(Controle controle) {
         this.controle = controle;
         initComponents();
+        jRadioButtonUmJogador.setSelected(true);
+        jRadioButtonFacil.setSelected(true);
+        jRadioButtonAdicao.setSelected(true);
     }
 
     /**
@@ -44,8 +47,13 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
         jLabelPartida = new javax.swing.JLabel();
         jButtonIniciar = new javax.swing.JButton();
         jButtonSair = new javax.swing.JButton();
+        jLabelNomeJogador = new javax.swing.JLabel();
+        jTextFieldNomeJogador1 = new javax.swing.JTextField();
+        jTextFieldNomeJogador2 = new javax.swing.JTextField();
+        jTextFieldNomeJogador2.setVisible(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabelNumJogadores.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelNumJogadores.setText("Número de Jogadores:");
@@ -99,7 +107,7 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
         jLabelPartida.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
         jLabelPartida.setText("Deixe a partida do jeitinho que quiser!");
 
-        jButtonIniciar.setFont(new java.awt.Font("Dialog", 3, 24)); // NOI18N
+        jButtonIniciar.setFont(new java.awt.Font("Dialog", 3, 36)); // NOI18N
         jButtonIniciar.setText("Iniciar!");
         jButtonIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +122,18 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
             }
         });
 
+        jLabelNomeJogador.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabelNomeJogador.setText("Nome do  Jogador: ");
+
+        jTextFieldNomeJogador1.setText("Jogador 1");
+        jTextFieldNomeJogador1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomeJogador1ActionPerformed(evt);
+            }
+        });
+
+        jTextFieldNomeJogador2.setText("Jogador 2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -121,7 +141,6 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelVamosJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabelDificuldade, javax.swing.GroupLayout.DEFAULT_SIZE, 245, Short.MAX_VALUE)
@@ -140,7 +159,11 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
                                     .addComponent(jRadioButtonFacil)
                                     .addComponent(jRadioButtonAdicao))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jRadioButtonMedio)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(jRadioButtonDificil))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jRadioButtonSubtracao)
                                         .addGap(12, 12, 12)
@@ -148,11 +171,15 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jRadioButtonDivisao))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jRadioButtonMedio)
-                                        .addGap(51, 51, 51)
-                                        .addComponent(jRadioButtonDificil))
-                                    .addComponent(jRadioButtonDoisJogadores))
-                                .addGap(0, 35, Short.MAX_VALUE))))
+                                        .addComponent(jRadioButtonDoisJogadores)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jTextFieldNomeJogador1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jTextFieldNomeJogador2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabelNomeJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                    .addComponent(jLabelVamosJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -163,41 +190,72 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
                 .addComponent(jLabelVamosJogar, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelPartida, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(24, 24, 24)
+                .addComponent(jLabelNomeJogador)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelNumJogadores, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jRadioButtonUmJogador)
-                    .addComponent(jRadioButtonDoisJogadores))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelDificuldade, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButtonFacil)
-                    .addComponent(jRadioButtonMedio)
-                    .addComponent(jRadioButtonDificil))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jRadioButtonAdicao)
-                    .addComponent(jRadioButtonSubtracao)
-                    .addComponent(jRadioButtonMultiplicacao)
-                    .addComponent(jRadioButtonDivisao))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
-                .addComponent(jButtonIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSair)
-                .addContainerGap())
+                    .addComponent(jRadioButtonDoisJogadores)
+                    .addComponent(jTextFieldNomeJogador1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldNomeJogador2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelDificuldade, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRadioButtonFacil)
+                            .addComponent(jRadioButtonMedio)
+                            .addComponent(jRadioButtonDificil))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelOperacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jRadioButtonAdicao)
+                            .addComponent(jRadioButtonSubtracao)
+                            .addComponent(jRadioButtonMultiplicacao)
+                            .addComponent(jRadioButtonDivisao))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                        .addComponent(jButtonIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonSair)
+                        .addContainerGap())))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
-        // Iniciar jogo com as configuracoes setadas
+        if (jRadioButtonUmJogador.isSelected()){
+        	controle.iniciarPartidaUmJogador(
+        			jTextFieldNomeJogador1.getText(),            
+        			verificarDificuldadeEscolhida(),
+            		verificarOperacaoEscolhida()
+            		); 
+            }
+        else { } //controle.iniciarPartidaDoisJogadores(); }
     }//GEN-LAST:event_jButtonIniciarActionPerformed
 
-    private void jRadioButtonDoisJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDoisJogadoresActionPerformed
+    private String verificarOperacaoEscolhida() {
+    	if (jRadioButtonAdicao.isSelected()) { return jRadioButtonAdicao.getText(); }
+    	else if (jRadioButtonSubtracao.isSelected()) { return jRadioButtonSubtracao.getText(); }
+    	else if (jRadioButtonMultiplicacao.isSelected()) { return jRadioButtonMultiplicacao.getText(); }
+    	else { return jRadioButtonDivisao.getText(); }
+    	
+	}
+
+	private String verificarDificuldadeEscolhida() {
+		if (jRadioButtonFacil.isSelected()) { return jRadioButtonFacil.getText(); }
+		else if (jRadioButtonMedio.isSelected() ) { return jRadioButtonMedio.getText(); }
+		else { return jRadioButtonDificil.getText(); }  
+	}
+
+	private void jRadioButtonDoisJogadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDoisJogadoresActionPerformed
+        jLabelNomeJogador.setText("Nome dos Jogadores: ");        
+        jTextFieldNomeJogador2.setText("Jogador 2");
+        jTextFieldNomeJogador2.setVisible(true);
+        
         buttonGroupOperacao.clearSelection();
         jLabelOperacao.setVisible(false);
         jRadioButtonAdicao.setVisible(false);
@@ -207,7 +265,12 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonDoisJogadoresActionPerformed
 
     private void jRadioButtonUmJogadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonUmJogadorActionPerformed
+        jLabelNomeJogador.setText("Nome do Jogador: ");        
+        jTextFieldNomeJogador2.setText("");
+        jTextFieldNomeJogador2.setVisible(false);
+        
         buttonGroupOperacao.clearSelection();
+        jRadioButtonAdicao.setSelected(true);
         jLabelOperacao.setVisible(true);
         jRadioButtonAdicao.setVisible(true);
         jRadioButtonSubtracao.setVisible(true);
@@ -220,6 +283,10 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
+    private void jTextFieldNomeJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeJogador1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeJogador1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroupDificuldade;
@@ -228,6 +295,7 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
     private javax.swing.JButton jButtonIniciar;
     private javax.swing.JButton jButtonSair;
     private javax.swing.JLabel jLabelDificuldade;
+    private javax.swing.JLabel jLabelNomeJogador;
     private javax.swing.JLabel jLabelNumJogadores;
     private javax.swing.JLabel jLabelOperacao;
     private javax.swing.JLabel jLabelPartida;
@@ -241,5 +309,7 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonMultiplicacao;
     private javax.swing.JRadioButton jRadioButtonSubtracao;
     private javax.swing.JRadioButton jRadioButtonUmJogador;
+    private javax.swing.JTextField jTextFieldNomeJogador1;
+    private javax.swing.JTextField jTextFieldNomeJogador2;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,30 +6,28 @@
  */
 package controle;
 
-import gui.Mensagens;
-import gui.TelaLogin;
-import gui.TelaPrincipalAreaAluno;
-import gui.TelaPrincipalAreaEducador;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.ThreadLocalRandom;
 
-import Modelo.Jogador;
-import Modelo.Ranking;
-import Modelo.Sistema;
+import Modelo.*;
+import gui.*;
 
 public class Controle {
     
     protected Sistema sis;
     protected Mensagens msg;
     protected Ranking rnk;
+    protected Questao qst;
+
     
     public Controle() {
 
         this.sis = new Sistema();
         this.msg = new Mensagens();
         this.rnk = new Ranking();
+        this.qst = new Questao();
         
         verificarSePastasObrigatoriasExistem();
         carregarInformacoes();
@@ -72,18 +70,65 @@ public class Controle {
     public void iniciarAplicacao(){
     	new TelaLogin(this).setVisible(true);
     }
-    
+   
     ////////////////////////////////////////////////////////////
 
+//    
     
+    public void iniciarPartidaUmJogador(String nomeJogador, String dificuldade, String operacao){   
+        Jogo jogo = new Jogo();
+        TelaJogo jogogui = new TelaJogo(this);
+        Questao questao = qst.criarQuestao(dificuldade, operacao);
+        Jogador jogador = new Jogador(nomeJogador);
+        ArrayList<String> botoes = sortearBotoes(questao.getResposta());
+        //jogo.iniciarPartidaUmJogador(jogador);
+        jogogui.criarTelaJogoUmJogador(sis.getTempoDaPartidaString(dificuldade), jogo.getNumQuestaoString(), 
+        		jogador.getPontuacaoString(), questao.getNumEsquerda(),
+        		questao.getNumDireita(), questao.getSimboloOperacao(),
+        		botoes.get(0), botoes.get(1), botoes.get(2), botoes.get(3));
+        //jogogui.iniciarPartida();
+        String resposta = jogogui.getRespostaDada();
+        System.out.println("BATATA");
+        if (verificarResposta(questao, resposta)) {
+        	jogador.pontuar(1);
+        }
+        	
     
+    }
     
+//    public void proximaRodada() {
+//    	jogo.
+//    }
     
+    public ArrayList<String> sortearBotoes(String respostaCorreta){
+    	ArrayList<String> arrayBotoes = new ArrayList<>();
+    	int respostaCorretaInt = Integer.parseInt(respostaCorreta);
+    	int randomPos = ThreadLocalRandom.current().nextInt(0, 4 + 1);
+    	
+    	for(int i = 0; i < 4; i++) {
+    		int randomNum = ThreadLocalRandom.current().nextInt(0, 30);
+    		System.out.println(randomNum);
+    		System.out.println("soma:" + (randomNum + respostaCorretaInt));
+    		String numeroAleatorio = Integer.toString(randomNum + respostaCorretaInt);
+    		arrayBotoes.add(i, numeroAleatorio);
+    	}
+    	
+    	arrayBotoes.add(randomPos, respostaCorreta);
+    	
+    	return arrayBotoes;
+    }
+ 
+    public String getResposta(String resposta) {
+    	return resposta;
+    }
     
+    public boolean verificarResposta(Questao questao, String resposta) {
+    	return questao.getResposta().equals(resposta);
+    }
     
     ////////////////////////// RANKING //////////////////////////
     
-    public void fluxoRanking(Jogador jogador, int cod_ranking) {
+	public void fluxoRanking(Jogador jogador, int cod_ranking) {
     	rnk.fluxoRanking(jogador, cod_ranking);    	
     }
     
@@ -178,5 +223,5 @@ public class Controle {
 	public ArrayList<Jogador> getRankingDivisao() {
 		return rnk.getRankingDivisao();
 	}
-    
+
 }

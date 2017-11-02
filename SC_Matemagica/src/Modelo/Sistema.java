@@ -136,6 +136,13 @@ public class Sistema {
     	Arrays.fill(correctPassword,'0');
     	return isCorrect;
     }
-    
+
+	public String getTempoDaPartidaString(String dificuldade) {
+		if (dificuldade.equals("fácil")) { return Integer.toString(getTmpFacil()); }
+		else if(dificuldade.equals("médio")) { return Integer.toString(getTmpMedio()); }
+		else return Integer.toString(getTmpDificil());
+	}
+
+   
     
 }

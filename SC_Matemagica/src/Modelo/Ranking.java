@@ -49,7 +49,7 @@ public class Ranking implements Serializable {
 	public void criarArquivo(String caminhoArquivo) {
 		FileOutputStream fo;
 		ArrayList<Jogador> arrayJogador = new ArrayList<Jogador>();
-		Jogador jogador = new Jogador();
+		Jogador jogador = new Jogador("Professor");
 		arrayJogador.add(jogador);
 		
 		try {

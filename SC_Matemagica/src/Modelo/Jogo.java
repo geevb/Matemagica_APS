@@ -1,10 +1,12 @@
 package Modelo;
 
 public class Jogo {
+	
+	private int numQuestao = 0;
 
 	public Jogo() {}
 	
-	public void fluxoJogoUmJogador() {
+	public void fluxoJogoUmJogador(Jogador jogador) {
 		
 		/*
 		 * 0 - Chamar tela do jogo
@@ -20,6 +22,12 @@ public class Jogo {
 		
 	}
 	
+        public void iniciarPartidaUmJogador(Jogador jogador){
+        
+            
+        
+        }
+        
 	public void fluxoJogoDoisJogadores() {
 		
 		/*
@@ -40,5 +48,8 @@ public class Jogo {
 		
 	}
 	
+	public String getNumQuestaoString() {
+		return Integer.toString(numQuestao);
+	}
 	
 }
