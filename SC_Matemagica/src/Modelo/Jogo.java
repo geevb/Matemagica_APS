@@ -2,10 +2,34 @@ package Modelo;
 
 public class Jogo {
 	
-	private int numQuestao = 0;
+	private int numQuestao = 1;
+	private String dificuldade;
+	private String operacao;
+
+
 
 	public Jogo() {}
 	
+	public String getDificuldade() {
+		return dificuldade;
+	}
+
+	public void setDificuldade(String dificuldade) {
+		this.dificuldade = dificuldade;
+	}
+
+	public String getOperacao() {
+		return operacao;
+	}
+
+	public void setOperacao(String operacao) {
+		this.operacao = operacao;
+	}
+
+	public void setNumQuestao(int numQuestao) {
+		this.numQuestao = numQuestao;
+	}
+
 	public void fluxoJogoUmJogador(Jogador jogador) {
 		
 		/*
@@ -48,8 +72,16 @@ public class Jogo {
 		
 	}
 	
+	public int getNumQuestao() {
+		return numQuestao;
+	}
+	
 	public String getNumQuestaoString() {
 		return Integer.toString(numQuestao);
+	}
+
+	public void incrementarNumQuestao() {
+		numQuestao++;
 	}
 	
 }

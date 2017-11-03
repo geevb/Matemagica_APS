@@ -20,14 +20,18 @@ public class Controle {
     protected Mensagens msg;
     protected Ranking rnk;
     protected Questao qst;
-
+    protected Jogo jogo;
+    protected TelaJogo jogogui;
+    protected Jogador jogador1;
+    protected Jogador jogador2;
     
     public Controle() {
 
         this.sis = new Sistema();
         this.msg = new Mensagens();
         this.rnk = new Ranking();
-        this.qst = new Questao();
+        this.jogo = new Jogo();
+        this.jogogui = new TelaJogo(this);
         
         verificarSePastasObrigatoriasExistem();
         carregarInformacoes();
@@ -76,29 +80,44 @@ public class Controle {
 //    
     
     public void iniciarPartidaUmJogador(String nomeJogador, String dificuldade, String operacao){   
-        Jogo jogo = new Jogo();
-        TelaJogo jogogui = new TelaJogo(this);
-        Questao questao = qst.criarQuestao(dificuldade, operacao);
-        Jogador jogador = new Jogador(nomeJogador);
-        ArrayList<String> botoes = sortearBotoes(questao.getResposta());
+        //Questao questao = qst.criarQuestao(dificuldade, operacao);
+    	Questao tmp = new Questao();
+    	jogo.setDificuldade(dificuldade);
+    	jogo.setOperacao(operacao);
+        qst = tmp.criarQuestao(dificuldade, operacao);
+        jogador1 = new Jogador(nomeJogador);
+        ArrayList<String> botoes = sortearBotoes(qst.getResposta());
+        
         //jogo.iniciarPartidaUmJogador(jogador);
         jogogui.criarTelaJogoUmJogador(sis.getTempoDaPartidaString(dificuldade), jogo.getNumQuestaoString(), 
-        		jogador.getPontuacaoString(), questao.getNumEsquerda(),
-        		questao.getNumDireita(), questao.getSimboloOperacao(),
+        		jogador1.getPontuacaoString(), qst.getNumEsquerda(),
+        		qst.getNumDireita(), qst.getSimboloOperacao(),
         		botoes.get(0), botoes.get(1), botoes.get(2), botoes.get(3));
-        //jogogui.iniciarPartida();
-        String resposta = jogogui.getRespostaDada();
-        System.out.println("BATATA");
-        if (verificarResposta(questao, resposta)) {
-        	jogador.pontuar(1);
-        }
-        	
-    
+        jogogui.iniciarPartida();    	
     }
     
-//    public void proximaRodada() {
-//    	jogo.
-//    }
+    public void proximaRodada() {
+    	Questao tmp = new Questao();
+    	qst = tmp.criarQuestao(jogo.getDificuldade(), jogo.getOperacao());
+    	ArrayList<String> botoes = sortearBotoes(qst.getResposta());
+    	if(jogo.getNumQuestao() == 10) { //terminarJogo(); 
+    	System.out.println("TERMINEI"); }
+    	
+    	String resposta = jogogui.getResposta();
+    	if (verificarResposta(qst, resposta)) {
+        	jogador1.pontuar(1);
+        	System.out.println("Pontuei!");
+        }
+    	
+    	jogogui.atualizarInformacoes(sis.getTempoDaPartidaString(jogo.getDificuldade()),
+    			jogo.getNumQuestaoString(), jogador1.getPontuacaoString(), qst.getNumEsquerda(),
+        		qst.getNumDireita(), qst.getSimboloOperacao(),
+        		botoes.get(0), botoes.get(1), botoes.get(2), botoes.get(3));
+    	jogo.incrementarNumQuestao();
+    	
+    	
+    }
+
     
     public ArrayList<String> sortearBotoes(String respostaCorreta){
     	ArrayList<String> arrayBotoes = new ArrayList<>();
@@ -117,9 +136,9 @@ public class Controle {
     	
     	return arrayBotoes;
     }
- 
-    public String getResposta(String resposta) {
-    	return resposta;
+    
+    public String getResposta() {
+    	return jogogui.getResposta();
     }
     
     public boolean verificarResposta(Questao questao, String resposta) {

@@ -159,16 +159,6 @@ public class TelaLogin extends javax.swing.JFrame {
     	{
     		this.dispose();
     	}
-//        if(jComboBoxNomeTipoUsuario.getSelectedItem().equals("Educador") && controle.isPasswordCorrect(jTextSenha.getPassword())){
-//            this.dispose();
-//            new TelaPrincipalAreaEducador(controle).setVisible(true);
-//        }else if(jComboBoxNomeTipoUsuario.getSelectedItem().equals("Jogador")){
-//            JOptionPane.showMessageDialog(null, "Bem-vindo ao Matemagica!");
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(null, "Acesso Negado.");
-//        }
-        
         
     }                                                                                
 
