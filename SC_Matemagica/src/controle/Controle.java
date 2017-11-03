@@ -9,6 +9,8 @@ package controle;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 
 import Modelo.*;
@@ -31,6 +33,7 @@ public class Controle {
         this.msg = new Mensagens();
         this.rnk = new Ranking();
         this.jogo = new Jogo();
+        this.qst = new Questao();
         this.jogogui = new TelaJogo(this);
         
         verificarSePastasObrigatoriasExistem();
@@ -80,58 +83,78 @@ public class Controle {
 //    
     
     public void iniciarPartidaUmJogador(String nomeJogador, String dificuldade, String operacao){   
-        //Questao questao = qst.criarQuestao(dificuldade, operacao);
-    	Questao tmp = new Questao();
     	jogo.setDificuldade(dificuldade);
     	jogo.setOperacao(operacao);
-        qst = tmp.criarQuestao(dificuldade, operacao);
+    	jogo.setTempo(sis.getTempoDaPartida(dificuldade));
         jogador1 = new Jogador(nomeJogador);
-        ArrayList<String> botoes = sortearBotoes(qst.getResposta());
-        
-        //jogo.iniciarPartidaUmJogador(jogador);
-        jogogui.criarTelaJogoUmJogador(sis.getTempoDaPartidaString(dificuldade), jogo.getNumQuestaoString(), 
-        		jogador1.getPontuacaoString(), qst.getNumEsquerda(),
-        		qst.getNumDireita(), qst.getSimboloOperacao(),
-        		botoes.get(0), botoes.get(1), botoes.get(2), botoes.get(3));
-        jogogui.iniciarPartida();    	
+    	jogogui.criarTelaJogoUmJogador();
+    	criarThreadTempo();
     }
     
-    public void proximaRodada() {
+      
+    public void proximaRodada() {   	
+    	jogogui.iniciarPartida();
+    	if(jogo.getNumQuestao() == 10) { 
+    		//terminarJogo(); 
+    		System.out.println("TERMINEI"); 
+    	}
+    	
+
     	Questao tmp = new Questao();
     	qst = tmp.criarQuestao(jogo.getDificuldade(), jogo.getOperacao());
-    	ArrayList<String> botoes = sortearBotoes(qst.getResposta());
-    	if(jogo.getNumQuestao() == 10) { //terminarJogo(); 
-    	System.out.println("TERMINEI"); }
-    	
-    	String resposta = jogogui.getResposta();
-    	if (verificarResposta(qst, resposta)) {
-        	jogador1.pontuar(1);
-        	System.out.println("Pontuei!");
-        }
-    	
+    	ArrayList<String> botoes = new ArrayList<>();
+    	botoes = sortearBotoes(qst.getResposta());
+
+ 	
     	jogogui.atualizarInformacoes(sis.getTempoDaPartidaString(jogo.getDificuldade()),
     			jogo.getNumQuestaoString(), jogador1.getPontuacaoString(), qst.getNumEsquerda(),
         		qst.getNumDireita(), qst.getSimboloOperacao(),
         		botoes.get(0), botoes.get(1), botoes.get(2), botoes.get(3));
-    	jogo.incrementarNumQuestao();
-    	
-    	
+    	jogo.incrementarNumQuestao();   	
     }
 
+    public void criarThreadTempo() {
+    	int tempoLocal = Integer.parseInt(sis.getTempoDaPartidaString(jogo.getDificuldade()));
+    	Runnable tempo = () -> {
+            System.out.println(Thread.currentThread().getName() + " is running");
+            Timer timer = new Timer();
+    		TimerTask timerTask = new TimerTask() {
+    			@Override
+    			public void run() {
+    				System.out.println("Rodando");
+    				if (tempoLocal == 0) {
+    						System.out.println("CABEI!");
+    						timer.purge();
+        					timer.cancel();
+    					}
+
+    					
+    				}
+
+    			
+
+    		};
+    		timer.schedule(timerTask, 0, 500);
+        
+           	
+    	
+    	};
+    	new Thread(tempo).start(); 
+    }
     
     public ArrayList<String> sortearBotoes(String respostaCorreta){
     	ArrayList<String> arrayBotoes = new ArrayList<>();
     	int respostaCorretaInt = Integer.parseInt(respostaCorreta);
-    	int randomPos = ThreadLocalRandom.current().nextInt(0, 4 + 1);
+    	int randomPos = ThreadLocalRandom.current().nextInt(0, 3 + 1);
     	
-    	for(int i = 0; i < 4; i++) {
-    		int randomNum = ThreadLocalRandom.current().nextInt(0, 30);
-    		System.out.println(randomNum);
-    		System.out.println("soma:" + (randomNum + respostaCorretaInt));
-    		String numeroAleatorio = Integer.toString(randomNum + respostaCorretaInt);
-    		arrayBotoes.add(i, numeroAleatorio);
+    	for(int i = 0; i < 3; i++) {
+    		int randomNum = ThreadLocalRandom.current().nextInt(-20, 10 +1);
+    		String numeroAleatorio = Integer.toString((randomNum + respostaCorretaInt));
+    		arrayBotoes.add(i, numeroAleatorio);    		
     	}
     	
+    	System.out.println("Botao correto na posicao: " + (randomPos +1));
+    	System.out.println("Resposta: " + respostaCorreta);
     	arrayBotoes.add(randomPos, respostaCorreta);
     	
     	return arrayBotoes;
@@ -141,8 +164,11 @@ public class Controle {
     	return jogogui.getResposta();
     }
     
-    public boolean verificarResposta(Questao questao, String resposta) {
-    	return questao.getResposta().equals(resposta);
+    public void verificarResposta(String resposta) {
+    	if (qst.getResposta().equals(resposta)) {
+        	jogador1.pontuar(1);
+        	System.out.println("Pontuei!");
+        }
     }
     
     ////////////////////////// RANKING //////////////////////////

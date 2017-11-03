@@ -138,11 +138,16 @@ public class Sistema {
     }
 
 	public String getTempoDaPartidaString(String dificuldade) {
-		if (dificuldade.equals("fácil")) { return Integer.toString(getTmpFacil()); }
-		else if(dificuldade.equals("médio")) { return Integer.toString(getTmpMedio()); }
+		if (dificuldade.equals("Fácil")) { return Integer.toString(getTmpFacil()); }
+		else if(dificuldade.equals("Médio")) { return Integer.toString(getTmpMedio()); }
 		else return Integer.toString(getTmpDificil());
 	}
 
+	public int getTempoDaPartida(String dificuldade) {
+		if (dificuldade.equals("Fácil")) { return getTmpFacil(); }
+		else if(dificuldade.equals("Médio")) { return getTmpMedio(); }
+		else return (getTmpDificil());
+	}
    
     
 }

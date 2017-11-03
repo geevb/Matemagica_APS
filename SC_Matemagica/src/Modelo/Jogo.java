@@ -5,8 +5,17 @@ public class Jogo {
 	private int numQuestao = 1;
 	private String dificuldade;
 	private String operacao;
+	private int tempo;
 
 
+
+	public int getTempo() {
+		return tempo;
+	}
+
+	public void setTempo(int tempo) {
+		this.tempo = tempo;
+	}
 
 	public Jogo() {}
 	

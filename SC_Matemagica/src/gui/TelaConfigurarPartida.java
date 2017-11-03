@@ -231,8 +231,9 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
         	controle.iniciarPartidaUmJogador(
         			jTextFieldNomeJogador1.getText(),            
         			verificarDificuldadeEscolhida(),
-            		verificarOperacaoEscolhida()
-            		); 
+            		verificarOperacaoEscolhida());
+        	
+        	controle.proximaRodada();
             }
         else { } //controle.iniciarPartidaDoisJogadores(); }
     }//GEN-LAST:event_jButtonIniciarActionPerformed

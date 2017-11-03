@@ -16,14 +16,18 @@ public class TelaJogo extends javax.swing.JFrame {
     public TelaJogo(Controle controle) {
     	this.controle = controle;
     }
-
+    
+    public void criarTelaJogoUmJogador() {
+        initComponents();       
+    }
+    
+    
     public void criarTelaJogoUmJogador(String tmpRestante, String numQuestao,
             String pontos, String numEsq, String numDir, String operacao,
             String bt1, String bt2, String bt3, String bt4) {
         initComponents();
         atualizarInformacoes(tmpRestante, numQuestao, pontos, numEsq, numDir, operacao,
-                bt1, bt2, bt3, bt4);
-        
+                bt1, bt2, bt3, bt4);        
     }
     
     public void atualizarInformacoes(String tmpRestante, String numQuestao,
@@ -42,11 +46,13 @@ public class TelaJogo extends javax.swing.JFrame {
         jButtonQuartaOp.setText(bt4);
     }
     
+    
+    
     public void iniciarPartida() {
     	setVisible(true);
     }
 
-    @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -243,27 +249,35 @@ public class TelaJogo extends javax.swing.JFrame {
 
     private void jButtonPrimeiraOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimeiraOpActionPerformed
     	setRespostaDada(jButtonPrimeiraOp.getText());
+    	controle.verificarResposta(this.getResposta());
     	controle.proximaRodada();
     }//GEN-LAST:event_jButtonPrimeiraOpActionPerformed
 
 	private void jButtonSegundaOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSegundaOpActionPerformed
 		setRespostaDada(jButtonSegundaOp.getText());
+		controle.verificarResposta(this.getResposta());
 		controle.proximaRodada();
     }//GEN-LAST:event_jButtonSegundaOpActionPerformed
 
     private void jButtonTerceiraOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerceiraOpActionPerformed
     	setRespostaDada(jButtonTerceiraOp.getText());
+    	controle.verificarResposta(this.getResposta());
     	controle.proximaRodada();
     }//GEN-LAST:event_jButtonTerceiraOpActionPerformed
 
     private void jButtonQuartaOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuartaOpActionPerformed
     	setRespostaDada(jButtonQuartaOp.getText());
+    	controle.verificarResposta(this.getResposta());
     	controle.proximaRodada();
     }//GEN-LAST:event_jButtonQuartaOpActionPerformed
 
     private void setRespostaDada(String resposta) {
 		this.respostaDada = resposta;		
 	}
+    
+    private void passarSegundo() {
+    	
+    }
     
     public String getResposta() {
     	return respostaDada;
