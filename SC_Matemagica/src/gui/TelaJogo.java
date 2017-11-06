@@ -21,6 +21,9 @@ public class TelaJogo extends javax.swing.JFrame {
         initComponents();       
     }
     
+    public void passarTempo(int tempoAtual) {
+    	this.jLabelNumTempoRestante.setText(Integer.toString(tempoAtual));
+    }
     
     public void criarTelaJogoUmJogador(String tmpRestante, String numQuestao,
             String pontos, String numEsq, String numDir, String operacao,

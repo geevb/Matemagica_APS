@@ -27,6 +27,8 @@ public class Controle {
     protected Jogador jogador1;
     protected Jogador jogador2;
     
+    procted boolean proximaRodada = 
+    
     public Controle() {
 
         this.sis = new Sistema();
@@ -88,18 +90,17 @@ public class Controle {
     	jogo.setTempo(sis.getTempoDaPartida(dificuldade));
         jogador1 = new Jogador(nomeJogador);
     	jogogui.criarTelaJogoUmJogador();
-    	criarThreadTempo();
     }
     
       
-    public void proximaRodada() {   	
+    public void proximaRodada() {
     	jogogui.iniciarPartida();
     	if(jogo.getNumQuestao() == 10) { 
     		//terminarJogo(); 
     		System.out.println("TERMINEI"); 
     	}
     	
-
+    	criarThreadTempo();
     	Questao tmp = new Questao();
     	qst = tmp.criarQuestao(jogo.getDificuldade(), jogo.getOperacao());
     	ArrayList<String> botoes = new ArrayList<>();
@@ -114,7 +115,10 @@ public class Controle {
     }
 
     public void criarThreadTempo() {
+    	Thread thread;
     	int tempoLocal = Integer.parseInt(sis.getTempoDaPartidaString(jogo.getDificuldade()));
+    	System.out.println("Tempo da dificuldade: " + jogo.getDificuldade() + " é: " + tempoLocal);
+    	jogo.setTempo(tempoLocal);
     	Runnable tempo = () -> {
             System.out.println(Thread.currentThread().getName() + " is running");
             Timer timer = new Timer();
@@ -122,26 +126,25 @@ public class Controle {
     			@Override
     			public void run() {
     				System.out.println("Rodando");
-    				if (tempoLocal == 0) {
+    				
+    				jogo.passarTempo(); // Decrementa uma unidade de tempo
+    				jogogui.passarTempo(jogo.getTempo());
+    				if (jogo.getTempo() == 0) {
     						System.out.println("CABEI!");
     						timer.purge();
         					timer.cancel();
-    					}
-
-    					
-    				}
-
-    			
-
+        					Thread.currentThread().interrupt();			
+    				}    					
+    			}
     		};
-    		timer.schedule(timerTask, 0, 500);
-        
-           	
-    	
+    		timer.schedule(timerTask, 0, 100);   	
     	};
-    	new Thread(tempo).start(); 
+    	
+    	thread = new Thread(tempo);
+    	thread.start();
     }
     
+   
     public ArrayList<String> sortearBotoes(String respostaCorreta){
     	ArrayList<String> arrayBotoes = new ArrayList<>();
     	int respostaCorretaInt = Integer.parseInt(respostaCorreta);

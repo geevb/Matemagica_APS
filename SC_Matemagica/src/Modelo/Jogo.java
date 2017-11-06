@@ -16,6 +16,10 @@ public class Jogo {
 	public void setTempo(int tempo) {
 		this.tempo = tempo;
 	}
+	
+	public void passarTempo() {
+		this.tempo--;
+	}
 
 	public Jogo() {}
 	
