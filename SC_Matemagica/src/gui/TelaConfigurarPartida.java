@@ -227,7 +227,8 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
-        if (jRadioButtonUmJogador.isSelected()){
+        this.dispose();
+    	if (jRadioButtonUmJogador.isSelected()){
         	controle.iniciarPartidaUmJogador(
         			jTextFieldNomeJogador1.getText(),            
         			verificarDificuldadeEscolhida(),
@@ -235,7 +236,9 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
         	
         	controle.proximaRodada();
             }
-        else { } //controle.iniciarPartidaDoisJogadores(); }
+        else { 
+        	//controle.iniciarPartidaDoisJogadores();
+        }  
     }//GEN-LAST:event_jButtonIniciarActionPerformed
 
     private String verificarOperacaoEscolhida() {

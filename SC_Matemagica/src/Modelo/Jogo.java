@@ -7,6 +7,12 @@ public class Jogo {
 	private String operacao;
 	private int tempo;
 
+	public void zerarAtributos() {
+		this.numQuestao = 1;
+		this.dificuldade = null;
+		this.operacao = null;
+		this.tempo = 0;
+	}
 
 	public int retornarCodigoDaPartidaAtual() {
 		if (operacao.equals("(+)Adição")) return 1;

@@ -21,23 +21,27 @@ public class TelaJogo extends javax.swing.JFrame {
         initComponents();       
     }
     
+    public void finalizarTelaGui() {
+    	this.dispose();
+    }
+    
     public void passarTempo(int tempoAtual) {
     	this.jLabelNumTempoRestante.setText(Integer.toString(tempoAtual));
     }
     
-    public void criarTelaJogoUmJogador(String tmpRestante, String numQuestao,
+    public void criarTelaJogoUmJogador(String numQuestao,
             String pontos, String numEsq, String numDir, String operacao,
             String bt1, String bt2, String bt3, String bt4) {
         initComponents();
-        atualizarInformacoes(tmpRestante, numQuestao, pontos, numEsq, numDir, operacao,
+        atualizarInformacoes(numQuestao, pontos, numEsq, numDir, operacao,
                 bt1, bt2, bt3, bt4);        
     }
     
-    public void atualizarInformacoes(String tmpRestante, String numQuestao,
+    public void atualizarInformacoes(String numQuestao,
             String pontos, String numEsq, String numDir, String operacao,
             String bt1, String bt2, String bt3, String bt4) {
     	
-        jLabelNumTempoRestante.setText(tmpRestante);
+        //jLabelNumTempoRestante.setText(tmpRestante);
         jLabelNumEsquerdaQuestao.setText(numQuestao);
         jLabelNumPontuacao.setText(pontos);
         jLabelNumeroEsquerda.setText(numEsq);
@@ -290,11 +294,13 @@ public class TelaJogo extends javax.swing.JFrame {
     	return respostaDada;
     }
     
+ 
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonPrimeiraOp;
-    private javax.swing.JButton jButtonQuartaOp;
     private javax.swing.JButton jButtonSegundaOp;
     private javax.swing.JButton jButtonTerceiraOp;
+    private javax.swing.JButton jButtonQuartaOp;    
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBarra;
     private javax.swing.JLabel jLabelNumDireitaQuestao;

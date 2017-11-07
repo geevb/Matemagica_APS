@@ -33,9 +33,7 @@ public class Controle {
         this.sis = new Sistema();
         this.msg = new Mensagens();
         this.rnk = new Ranking();
-        this.jogo = new Jogo();
         this.qst = new Questao();
-        this.jogogui = new TelaJogo(this);
         
         verificarSePastasObrigatoriasExistem();
         carregarInformacoes();
@@ -83,13 +81,18 @@ public class Controle {
 
 //    
     
-    public void iniciarPartidaUmJogador(String nomeJogador, String dificuldade, String operacao){   
+    public void iniciarPartidaUmJogador(String nomeJogador, String dificuldade, String operacao){
+    	this.jogo = new Jogo();
+    	jogo.zerarAtributos();
     	jogo.setDificuldade(dificuldade);
     	jogo.setOperacao(operacao);
     	jogo.setTempo(sis.getTempoDaPartida(dificuldade));
         jogador1 = new Jogador(nomeJogador);
+        
+        this.jogogui = new TelaJogo(this);
     	jogogui.criarTelaJogoUmJogador();
     	jogogui.iniciarPartida();
+    	
     }
     
       
@@ -99,14 +102,14 @@ public class Controle {
     		System.out.println("TERMINEI"); 
     	}
     	
-    	criarThreadTempo();
+    	
     	Questao tmp = new Questao();
     	qst = tmp.criarQuestao(jogo.getDificuldade(), jogo.getOperacao());
     	ArrayList<String> botoes = new ArrayList<>();
     	botoes = sortearBotoes(qst.getResposta());
 
- 	
-    	jogogui.atualizarInformacoes(sis.getTempoDaPartidaString(jogo.getDificuldade()),
+    	criarThreadTempo();
+    	jogogui.atualizarInformacoes(
     			jogo.getNumQuestaoString(), jogador1.getPontuacaoString(), qst.getNumEsquerda(),
         		qst.getNumDireita(), qst.getSimboloOperacao(),
         		botoes.get(0), botoes.get(1), botoes.get(2), botoes.get(3));
@@ -145,14 +148,17 @@ public class Controle {
     
     public void terminarJogo() {
     	finalizarGuiJogo();
+    	
+    	// Verifica se entra no ranking e retorna com a futura posicao
     	int posicaoNoRanking = rnk.entraNoRanking(jogador1, getCodDaOperacaoDaPartida());
     	if(posicaoNoRanking != -1) {
     		rnk.adicionarAoRanking(jogador1, getCodDaOperacaoDaPartida(), posicaoNoRanking);
-    	}
+    	} else {}
+    	new TelaPrincipalAreaAluno(this).setVisible(true);
     }
    
     public void finalizarGuiJogo() {
-    	jogogui.dispose();
+    	jogogui.finalizarTelaGui();
     }
     
     public ArrayList<String> sortearBotoes(String respostaCorreta){
