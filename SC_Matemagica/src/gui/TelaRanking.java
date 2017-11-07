@@ -120,25 +120,25 @@ public class TelaRanking extends javax.swing.JFrame {
             }
         });
 
-        jLabelNomePriJog.setText("jLabel10");
+        jLabelNomePriJog.setText("");
 
-        jLabelNomeSegJog.setText("jLabel11");
+        jLabelNomeSegJog.setText("");
 
-        jLabelNomeTerJog.setText("jLabel12");
+        jLabelNomeTerJog.setText("");
 
-        jLabelNomeQuarJog.setText("jLabel13");
+        jLabelNomeQuarJog.setText("");
 
-        jLabelNomeQuinJog.setText("jLabel14");
+        jLabelNomeQuinJog.setText("");
 
-        jLabelPontosPriJog.setText("jLabel15");
+        jLabelPontosPriJog.setText("");
 
-        jLabelPontosSegJog.setText("jLabel16");
+        jLabelPontosSegJog.setText("");
 
-        jLabelPontosTerJog.setText("jLabel17");
+        jLabelPontosTerJog.setText("");
 
-        jLabelPontosQuarJog.setText("jLabel18");
+        jLabelPontosQuarJog.setText("");
 
-        jLabelPontosQuinJog.setText("jLabel19");
+        jLabelPontosQuinJog.setText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

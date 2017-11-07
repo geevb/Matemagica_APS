@@ -54,7 +54,8 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
-
+        
+        
         jLabelNumJogadores.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabelNumJogadores.setText("Número de Jogadores:");
 

@@ -26,7 +26,8 @@ public class Controle {
     protected TelaJogo jogogui;
     protected Jogador jogador1;
     protected Jogador jogador2;
-    protected boolean novaRodada = false;
+    private boolean novaRodada = false;
+    private boolean partidaFinalizada = false;
     
     public Controle() {
 
@@ -82,8 +83,8 @@ public class Controle {
 //    
     
     public void iniciarPartidaUmJogador(String nomeJogador, String dificuldade, String operacao){
+    	setPartidaFinalizada(false);
     	this.jogo = new Jogo();
-    	jogo.zerarAtributos();
     	jogo.setDificuldade(dificuldade);
     	jogo.setOperacao(operacao);
     	jogo.setTempo(sis.getTempoDaPartida(dificuldade));
@@ -91,13 +92,12 @@ public class Controle {
         
         this.jogogui = new TelaJogo(this);
     	jogogui.criarTelaJogoUmJogador();
-    	jogogui.iniciarPartida();
-    	
+    	jogogui.iniciarPartida();    	
     }
     
       
     public void proximaRodada() {
-    	if(jogo.getNumQuestao() == 11) { 
+    	if(jogo.getNumQuestao() == 11) {    		
     		terminarJogo();
     		System.out.println("TERMINEI"); 
     	}
@@ -116,7 +116,11 @@ public class Controle {
     	jogo.incrementarNumQuestao();   	
     }
 
-    public void criarThreadTempo() {
+    private void setPartidaFinalizada(boolean b) {
+		this.partidaFinalizada = b;		
+	}
+
+	public void criarThreadTempo() {
     	Thread thread;
     	int tempoLocal = sis.getTempoDaPartida(jogo.getDificuldade());
     	jogo.setTempo(tempoLocal);
@@ -129,7 +133,7 @@ public class Controle {
     				jogo.passarTempo(); // Decrementa uma unidade de tempo
     				jogogui.passarTempo(jogo.getTempo()); // Altera a label de tempo com o tempo atual
     				// Verificar se o tempo para pontuacao esgotou ou botao de resposta foi clicado.
-    				if (jogo.getTempo() == 0 || getNovaRodada()) {
+    				if (jogo.getTempo() == 0 || getNovaRodada() || getPartidaFinalizada()) {
     						System.out.println("CABEI!");
     						timer.purge();
         					timer.cancel();
@@ -137,9 +141,13 @@ public class Controle {
         					Thread.currentThread().interrupt();
     				}    					
     			}
+
+				private boolean getPartidaFinalizada() {					
+					return partidaFinalizada;
+				}
     		};
     		// Tempo em ms.
-    		timer.schedule(timerTask, 0, 1000);   	
+    		timer.schedule(timerTask, 0, 500);   	
     	};
     	
     	thread = new Thread(tempo);
@@ -147,6 +155,7 @@ public class Controle {
     }
     
     public void terminarJogo() {
+    	setPartidaFinalizada(true);
     	finalizarGuiJogo();
     	
     	// Verifica se entra no ranking e retorna com a futura posicao

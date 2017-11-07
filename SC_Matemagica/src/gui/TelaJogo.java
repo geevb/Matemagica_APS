@@ -286,10 +286,7 @@ public class TelaJogo extends javax.swing.JFrame {
 		this.respostaDada = resposta;		
 	}
     
-    private void passarSegundo() {
-    	
-    }
-    
+  
     public String getResposta() {
     	return respostaDada;
     }
