@@ -26,8 +26,7 @@ public class Controle {
     protected TelaJogo jogogui;
     protected Jogador jogador1;
     protected Jogador jogador2;
-    
-    procted boolean proximaRodada = 
+    protected boolean novaRodada = false;
     
     public Controle() {
 
@@ -90,13 +89,13 @@ public class Controle {
     	jogo.setTempo(sis.getTempoDaPartida(dificuldade));
         jogador1 = new Jogador(nomeJogador);
     	jogogui.criarTelaJogoUmJogador();
+    	jogogui.iniciarPartida();
     }
     
       
     public void proximaRodada() {
-    	jogogui.iniciarPartida();
-    	if(jogo.getNumQuestao() == 10) { 
-    		//terminarJogo(); 
+    	if(jogo.getNumQuestao() == 11) { 
+    		terminarJogo();
     		System.out.println("TERMINEI"); 
     	}
     	
@@ -116,8 +115,7 @@ public class Controle {
 
     public void criarThreadTempo() {
     	Thread thread;
-    	int tempoLocal = Integer.parseInt(sis.getTempoDaPartidaString(jogo.getDificuldade()));
-    	System.out.println("Tempo da dificuldade: " + jogo.getDificuldade() + " é: " + tempoLocal);
+    	int tempoLocal = sis.getTempoDaPartida(jogo.getDificuldade());
     	jogo.setTempo(tempoLocal);
     	Runnable tempo = () -> {
             System.out.println(Thread.currentThread().getName() + " is running");
@@ -125,26 +123,38 @@ public class Controle {
     		TimerTask timerTask = new TimerTask() {
     			@Override
     			public void run() {
-    				System.out.println("Rodando");
-    				
     				jogo.passarTempo(); // Decrementa uma unidade de tempo
-    				jogogui.passarTempo(jogo.getTempo());
-    				if (jogo.getTempo() == 0) {
+    				jogogui.passarTempo(jogo.getTempo()); // Altera a label de tempo com o tempo atual
+    				// Verificar se o tempo para pontuacao esgotou ou botao de resposta foi clicado.
+    				if (jogo.getTempo() == 0 || getNovaRodada()) {
     						System.out.println("CABEI!");
     						timer.purge();
         					timer.cancel();
-        					Thread.currentThread().interrupt();			
+        					setNovaRodada(false);
+        					Thread.currentThread().interrupt();
     				}    					
     			}
     		};
-    		timer.schedule(timerTask, 0, 100);   	
+    		// Tempo em ms.
+    		timer.schedule(timerTask, 0, 1000);   	
     	};
     	
     	thread = new Thread(tempo);
     	thread.start();
     }
     
+    public void terminarJogo() {
+    	finalizarGuiJogo();
+    	int posicaoNoRanking = rnk.entraNoRanking(jogador1, getCodDaOperacaoDaPartida());
+    	if(posicaoNoRanking != -1) {
+    		rnk.adicionarAoRanking(jogador1, getCodDaOperacaoDaPartida(), posicaoNoRanking);
+    	}
+    }
    
+    public void finalizarGuiJogo() {
+    	jogogui.dispose();
+    }
+    
     public ArrayList<String> sortearBotoes(String respostaCorreta){
     	ArrayList<String> arrayBotoes = new ArrayList<>();
     	int respostaCorretaInt = Integer.parseInt(respostaCorreta);
@@ -156,11 +166,13 @@ public class Controle {
     		arrayBotoes.add(i, numeroAleatorio);    		
     	}
     	
-    	System.out.println("Botao correto na posicao: " + (randomPos +1));
-    	System.out.println("Resposta: " + respostaCorreta);
     	arrayBotoes.add(randomPos, respostaCorreta);
     	
     	return arrayBotoes;
+    }
+    
+    public int getCodDaOperacaoDaPartida() {
+    	return jogo.retornarCodigoDaPartidaAtual();
     }
     
     public String getResposta() {
@@ -169,9 +181,17 @@ public class Controle {
     
     public void verificarResposta(String resposta) {
     	if (qst.getResposta().equals(resposta)) {
-        	jogador1.pontuar(1);
-        	System.out.println("Pontuei!");
+        	jogador1.pontuar(jogo.getTempo());
+        	System.out.println("Pontuei: " + jogo.getTempo());
         }
+    }
+    
+    public boolean getNovaRodada() {
+    	return novaRodada;
+    }
+    
+    public void setNovaRodada(boolean novaRodada) {
+    	this.novaRodada = novaRodada;
     }
     
     ////////////////////////// RANKING //////////////////////////

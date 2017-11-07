@@ -253,24 +253,28 @@ public class TelaJogo extends javax.swing.JFrame {
     private void jButtonPrimeiraOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPrimeiraOpActionPerformed
     	setRespostaDada(jButtonPrimeiraOp.getText());
     	controle.verificarResposta(this.getResposta());
+    	controle.setNovaRodada(true);
     	controle.proximaRodada();
     }//GEN-LAST:event_jButtonPrimeiraOpActionPerformed
 
 	private void jButtonSegundaOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSegundaOpActionPerformed
 		setRespostaDada(jButtonSegundaOp.getText());
 		controle.verificarResposta(this.getResposta());
+		controle.setNovaRodada(true);
 		controle.proximaRodada();
     }//GEN-LAST:event_jButtonSegundaOpActionPerformed
 
     private void jButtonTerceiraOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerceiraOpActionPerformed
     	setRespostaDada(jButtonTerceiraOp.getText());
     	controle.verificarResposta(this.getResposta());
+    	controle.setNovaRodada(true);
     	controle.proximaRodada();
     }//GEN-LAST:event_jButtonTerceiraOpActionPerformed
 
     private void jButtonQuartaOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuartaOpActionPerformed
     	setRespostaDada(jButtonQuartaOp.getText());
     	controle.verificarResposta(this.getResposta());
+    	controle.setNovaRodada(true);
     	controle.proximaRodada();
     }//GEN-LAST:event_jButtonQuartaOpActionPerformed
 

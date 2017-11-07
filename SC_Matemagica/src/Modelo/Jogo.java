@@ -8,6 +8,12 @@ public class Jogo {
 	private int tempo;
 
 
+	public int retornarCodigoDaPartidaAtual() {
+		if (operacao.equals("(+)Adição")) return 1;
+		else if (operacao.equals("(-)Subtração")) return 2;
+		else if (operacao.equals("(x)Multiplicação")) return 3;
+		else return 4;
+	}
 
 	public int getTempo() {
 		return tempo;
@@ -18,7 +24,10 @@ public class Jogo {
 	}
 	
 	public void passarTempo() {
-		this.tempo--;
+		if (getTempo() > 0) {
+			this.tempo--;
+		}
+		
 	}
 
 	public Jogo() {}
@@ -96,5 +105,5 @@ public class Jogo {
 	public void incrementarNumQuestao() {
 		numQuestao++;
 	}
-	
+		
 }
