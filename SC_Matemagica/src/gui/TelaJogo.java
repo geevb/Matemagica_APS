@@ -286,6 +286,9 @@ public class TelaJogo extends javax.swing.JFrame {
 		this.respostaDada = resposta;		
 	}
     
+    public void atualizarTempoDaTela(String tempo) {
+    	jLabelTempoRestante.setText(tempo);
+    }
   
     public String getResposta() {
     	return respostaDada;

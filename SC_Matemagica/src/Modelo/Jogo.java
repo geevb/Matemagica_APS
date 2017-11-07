@@ -5,13 +5,15 @@ public class Jogo {
 	private int numQuestao = 1;
 	private String dificuldade;
 	private String operacao;
-	private int tempo;
+	private int tempoDaDificuldade;
+	private int tempoDaResposta;
 
 	public void zerarAtributos() {
 		this.numQuestao = 1;
 		this.dificuldade = null;
 		this.operacao = null;
-		this.tempo = 0;
+		this.tempoDaDificuldade = 0;
+		this.tempoDaResposta = 0;
 	}
 
 	public int retornarCodigoDaPartidaAtual() {
@@ -21,17 +23,25 @@ public class Jogo {
 		else return 4;
 	}
 
-	public int getTempo() {
-		return tempo;
+	public int getTempoDaDificuldade() {
+		return tempoDaDificuldade;
 	}
 
-	public void setTempo(int tempo) {
-		this.tempo = tempo;
+	public int getTempoDaResposta() {
+		return tempoDaResposta;
+	}
+	
+	public void setTempoDaDificuldade(int tempoDaDificuldade) {
+		this.tempoDaDificuldade = tempoDaDificuldade;
+	}
+	
+	public void setTempoDaResposta(int tempoDaResposta) {
+		this.tempoDaResposta = tempoDaResposta;
 	}
 	
 	public void passarTempo() {
-		if (getTempo() > 0) {
-			this.tempo--;
+		if (getTempoDaResposta() > 0) {
+			this.tempoDaResposta--;
 		}
 		
 	}

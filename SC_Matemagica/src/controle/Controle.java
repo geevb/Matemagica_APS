@@ -26,6 +26,8 @@ public class Controle {
     protected TelaJogo jogogui;
     protected Jogador jogador1;
     protected Jogador jogador2;
+    protected Timer timer;
+    
     private boolean novaRodada = false;
     private boolean partidaFinalizada = false;
     
@@ -87,12 +89,14 @@ public class Controle {
     	this.jogo = new Jogo();
     	jogo.setDificuldade(dificuldade);
     	jogo.setOperacao(operacao);
-    	jogo.setTempo(sis.getTempoDaPartida(dificuldade));
+    	jogo.setTempoDaDificuldade(sis.getTempoDaPartida(dificuldade));
         jogador1 = new Jogador(nomeJogador);
         
         this.jogogui = new TelaJogo(this);
     	jogogui.criarTelaJogoUmJogador();
-    	jogogui.iniciarPartida();    	
+    	jogogui.iniciarPartida();
+    	
+    	this.timer = new Timer();
     }
     
       
@@ -100,54 +104,89 @@ public class Controle {
     	if(jogo.getNumQuestao() == 11) {    		
     		terminarJogo();
     		System.out.println("TERMINEI"); 
-    	}
-    	
-    	
-    	Questao tmp = new Questao();
-    	qst = tmp.criarQuestao(jogo.getDificuldade(), jogo.getOperacao());
-    	ArrayList<String> botoes = new ArrayList<>();
-    	botoes = sortearBotoes(qst.getResposta());
+    	} else {
+    	    	
+    		Questao tmp = new Questao();
+    		qst = tmp.criarQuestao(jogo.getDificuldade(), jogo.getOperacao());
+    		ArrayList<String> botoes = new ArrayList<>();
+    		botoes = sortearBotoes(qst.getResposta());
 
-    	criarThreadTempo();
-    	jogogui.atualizarInformacoes(
+    	
+    		jogogui.atualizarInformacoes(
     			jogo.getNumQuestaoString(), jogador1.getPontuacaoString(), qst.getNumEsquerda(),
         		qst.getNumDireita(), qst.getSimboloOperacao(),
         		botoes.get(0), botoes.get(1), botoes.get(2), botoes.get(3));
-    	jogo.incrementarNumQuestao();   	
+    		jogo.incrementarNumQuestao();
+    		//criarThreadTempo();
+    		atualizarTempoDaTela();
+    	}
     }
 
     private void setPartidaFinalizada(boolean b) {
 		this.partidaFinalizada = b;		
 	}
 
+    
+    public void atualizarTempoDaTela() {
+    	int tempoLocal = jogo.getTempoDaDificuldade();
+    	jogo.setTempoDaResposta(tempoLocal);
+    	if (timer != null) { timer.cancel(); }    	
+    	
+    	TimerTask timerTask = new TimerTask() {
+    	
+			@Override
+			public void run() {
+				jogogui.passarTempo(jogo.getTempoDaResposta());
+				if (jogo.getTempoDaResposta() == 0 ||  getPartidaFinalizada()) {
+					System.out.println("CABEI!");
+				
+					timer.purge();
+					timer.cancel();
+				} else {    			
+					jogo.passarTempo(); // Decrementa uma unidade de tempo
+				 // Altera a label de tempo com o tempo atual
+				// Verificar se o tempo para pontuacao esgotou ou botao de resposta foi clicado.
+				}
+			}
+    	};
+    	
+    	timer = new Timer();
+		timer.scheduleAtFixedRate(timerTask, 0, 50);
+
+    }
+    
 	public void criarThreadTempo() {
     	Thread thread;
-    	int tempoLocal = sis.getTempoDaPartida(jogo.getDificuldade());
-    	jogo.setTempo(tempoLocal);
+    	int tempoLocal = jogo.getTempoDaDificuldade();
+    	jogo.setTempoDaResposta(tempoLocal);
     	Runnable tempo = () -> {
             System.out.println(Thread.currentThread().getName() + " is running");
             Timer timer = new Timer();
     		TimerTask timerTask = new TimerTask() {
-    			@Override
+				@Override
     			public void run() {
+    				jogogui.passarTempo(jogo.getTempoDaResposta());
+    				if (jogo.getTempoDaResposta() == 0 || getPartidaFinalizada()) {
+						System.out.println("CABEI!");
+						timer.purge();
+    					timer.cancel();
+    					//setNovaRodada(false);        					
+    					try {	
+    						Thread.currentThread().join();
+							Thread.currentThread().interrupt();
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+				}    			
     				jogo.passarTempo(); // Decrementa uma unidade de tempo
-    				jogogui.passarTempo(jogo.getTempo()); // Altera a label de tempo com o tempo atual
+    				 // Altera a label de tempo com o tempo atual
     				// Verificar se o tempo para pontuacao esgotou ou botao de resposta foi clicado.
-    				if (jogo.getTempo() == 0 || getNovaRodada() || getPartidaFinalizada()) {
-    						System.out.println("CABEI!");
-    						timer.purge();
-        					timer.cancel();
-        					setNovaRodada(false);
-        					Thread.currentThread().interrupt();
-    				}    					
+    						
     			}
-
-				private boolean getPartidaFinalizada() {					
-					return partidaFinalizada;
-				}
     		};
     		// Tempo em ms.
-    		timer.schedule(timerTask, 0, 500);   	
+    		timer.schedule(timerTask, 0, 100);   	
     	};
     	
     	thread = new Thread(tempo);
@@ -196,8 +235,8 @@ public class Controle {
     
     public void verificarResposta(String resposta) {
     	if (qst.getResposta().equals(resposta)) {
-        	jogador1.pontuar(jogo.getTempo());
-        	System.out.println("Pontuei: " + jogo.getTempo());
+        	jogador1.pontuar(jogo.getTempoDaResposta());
+        	System.out.println("Pontuei: " + jogo.getTempoDaResposta());
         }
     }
     
@@ -222,7 +261,9 @@ public class Controle {
     ////////////////////////////////////////////////////////////
     
 
-    
+	private boolean getPartidaFinalizada() {					
+		return partidaFinalizada;
+	}
     
     
     
@@ -306,5 +347,20 @@ public class Controle {
 	public ArrayList<Jogador> getRankingDivisao() {
 		return rnk.getRankingDivisao();
 	}
+
+//	@Override
+//	public void run() {
+//		jogo.passarTempo(); // Decrementa uma unidade de tempo
+//		jogogui.passarTempo(jogo.getTempoDaResposta()); // Altera a label de tempo com o tempo atual
+//		// Verificar se o tempo para pontuacao esgotou ou botao de resposta foi clicado.
+//		if (jogo.getTempoDaResposta() == 0 || getNovaRodada() || getPartidaFinalizada()) {
+//				System.out.println("CABEI!");
+//				timer.purge();
+//				timer.cancel();
+//				setNovaRodada(false);
+//				Thread.currentThread().interrupt();
+//		}    					
+//		
+//	}
 
 }

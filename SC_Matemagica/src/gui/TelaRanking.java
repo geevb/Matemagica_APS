@@ -283,6 +283,20 @@ public class TelaRanking extends javax.swing.JFrame {
 
     
     private void preencherCamposRanking(ArrayList<Jogador> jogadores) {
+    	// Limpar campos prévios
+    	jLabelNomePriJog.setText("");
+    	jLabelNomeSegJog.setText("");
+    	jLabelNomeTerJog.setText("");
+    	jLabelNomeQuarJog.setText("");
+    	jLabelNomeQuinJog.setText("");
+    	
+    	jLabelPontosPriJog.setText("");
+    	jLabelPontosSegJog.setText("");
+    	jLabelPontosTerJog.setText("");
+    	jLabelPontosQuarJog.setText("");
+    	jLabelPontosQuinJog.setText("");
+    	
+    	// Preencher campos
     	for(int i=0; i < jogadores.size(); i++) {
     		
     		if(i==0) { jLabelNomePriJog.setText(jogadores.get(i).getNome());
