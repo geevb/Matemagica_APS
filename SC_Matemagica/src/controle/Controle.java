@@ -28,7 +28,6 @@ public class Controle {
     protected Jogador jogador2;
     protected Timer timer;
     
-    private boolean novaRodada = false;
     private boolean partidaFinalizada = false;
     
     public Controle() {
@@ -103,7 +102,6 @@ public class Controle {
     public void proximaRodada() {
     	if(jogo.getNumQuestao() == 11) {    		
     		terminarJogo();
-    		System.out.println("TERMINEI"); 
     	} else {
     	    	
     		Questao tmp = new Questao();
@@ -155,54 +153,60 @@ public class Controle {
 
     }
     
-	public void criarThreadTempo() {
-    	Thread thread;
-    	int tempoLocal = jogo.getTempoDaDificuldade();
-    	jogo.setTempoDaResposta(tempoLocal);
-    	Runnable tempo = () -> {
-            System.out.println(Thread.currentThread().getName() + " is running");
-            Timer timer = new Timer();
-    		TimerTask timerTask = new TimerTask() {
-				@Override
-    			public void run() {
-    				jogogui.passarTempo(jogo.getTempoDaResposta());
-    				if (jogo.getTempoDaResposta() == 0 || getPartidaFinalizada()) {
-						System.out.println("CABEI!");
-						timer.purge();
-    					timer.cancel();
-    					//setNovaRodada(false);        					
-    					try {	
-    						Thread.currentThread().join();
-							Thread.currentThread().interrupt();
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-				}    			
-    				jogo.passarTempo(); // Decrementa uma unidade de tempo
-    				 // Altera a label de tempo com o tempo atual
-    				// Verificar se o tempo para pontuacao esgotou ou botao de resposta foi clicado.
-    						
-    			}
-    		};
-    		// Tempo em ms.
-    		timer.schedule(timerTask, 0, 100);   	
-    	};
-    	
-    	thread = new Thread(tempo);
-    	thread.start();
-    }
+//	public void criarThreadTempo() {
+//    	Thread thread;
+//    	int tempoLocal = jogo.getTempoDaDificuldade();
+//    	jogo.setTempoDaResposta(tempoLocal);
+//    	Runnable tempo = () -> {
+//            System.out.println(Thread.currentThread().getName() + " is running");
+//            Timer timer = new Timer();
+//    		TimerTask timerTask = new TimerTask() {
+//				@Override
+//    			public void run() {
+//    				jogogui.passarTempo(jogo.getTempoDaResposta());
+//    				if (jogo.getTempoDaResposta() == 0 || getPartidaFinalizada()) {
+//						System.out.println("CABEI!");
+//						timer.purge();
+//    					timer.cancel();
+//    					//setNovaRodada(false);        					
+//    					try {	
+//    						Thread.currentThread().join();
+//							Thread.currentThread().interrupt();
+//						} catch (InterruptedException e) {
+//							// TODO Auto-generated catch block
+//							e.printStackTrace();
+//						}
+//				}    			
+//    				jogo.passarTempo(); // Decrementa uma unidade de tempo
+//    				 // Altera a label de tempo com o tempo atual
+//    				// Verificar se o tempo para pontuacao esgotou ou botao de resposta foi clicado.
+//    						
+//    			}
+//    		};
+//    		// Tempo em ms.
+//    		timer.schedule(timerTask, 0, 100);   	
+//    	};
+//    	
+//    	thread = new Thread(tempo);
+//    	thread.start();
+//    }
     
     public void terminarJogo() {
     	setPartidaFinalizada(true);
     	finalizarGuiJogo();
+        boolean entrouRanking = false;
     	
     	// Verifica se entra no ranking e retorna com a futura posicao
     	int posicaoNoRanking = rnk.entraNoRanking(jogador1, getCodDaOperacaoDaPartida());
     	if(posicaoNoRanking != -1) {
     		rnk.adicionarAoRanking(jogador1, getCodDaOperacaoDaPartida(), posicaoNoRanking);
+                entrouRanking = true;
     	} else {}
-    	new TelaPrincipalAreaAluno(this).setVisible(true);
+        
+    	TelaPontuacaoFinal telaFinal = new TelaPontuacaoFinal(this);
+        telaFinal.atualizarDadosDoJogador(jogador1.getNome(), jogador1.getPontuacaoString(), entrouRanking);
+        telaFinal.setVisible(true);
+        
     }
    
     public void finalizarGuiJogo() {
@@ -240,13 +244,6 @@ public class Controle {
         }
     }
     
-    public boolean getNovaRodada() {
-    	return novaRodada;
-    }
-    
-    public void setNovaRodada(boolean novaRodada) {
-    	this.novaRodada = novaRodada;
-    }
     
     ////////////////////////// RANKING //////////////////////////
     
@@ -347,20 +344,5 @@ public class Controle {
 	public ArrayList<Jogador> getRankingDivisao() {
 		return rnk.getRankingDivisao();
 	}
-
-//	@Override
-//	public void run() {
-//		jogo.passarTempo(); // Decrementa uma unidade de tempo
-//		jogogui.passarTempo(jogo.getTempoDaResposta()); // Altera a label de tempo com o tempo atual
-//		// Verificar se o tempo para pontuacao esgotou ou botao de resposta foi clicado.
-//		if (jogo.getTempoDaResposta() == 0 || getNovaRodada() || getPartidaFinalizada()) {
-//				System.out.println("CABEI!");
-//				timer.purge();
-//				timer.cancel();
-//				setNovaRodada(false);
-//				Thread.currentThread().interrupt();
-//		}    					
-//		
-//	}
 
 }
