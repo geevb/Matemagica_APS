@@ -12,6 +12,14 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
+import br.ufsc.inf.leobr.cliente.Jogada;
+import br.ufsc.inf.leobr.cliente.OuvidorProxy;
+import br.ufsc.inf.leobr.cliente.Proxy;
+import br.ufsc.inf.leobr.cliente.exception.ArquivoMultiplayerException;
+import br.ufsc.inf.leobr.cliente.exception.JahConectadoException;
+import br.ufsc.inf.leobr.cliente.exception.NaoConectadoException;
+import br.ufsc.inf.leobr.cliente.exception.NaoJogandoException;
+import br.ufsc.inf.leobr.cliente.exception.NaoPossivelConectarException;
 
 import Modelo.*;
 import gui.*;
@@ -24,9 +32,12 @@ public class Controle {
     protected Questao qst;
     protected Jogo jogo;
     protected TelaJogo jogogui;
+    protected TelaEscolherQuestao telaquestao;
     protected Jogador jogador1;
     protected Jogador jogador2;
     protected Timer timer;
+    
+    
     
     private boolean partidaFinalizada = false;
     
@@ -98,6 +109,21 @@ public class Controle {
     	this.timer = new Timer();
     }
     
+    public void iniciarPartidaDoisJogadores(String nomeJogador1, String nomeJogador2, String dificuldade) {
+    	setPartidaFinalizada(false);
+    	this.jogo = new Jogo();
+    	jogo.setDificuldade(dificuldade);
+    	jogo.setTempoDaDificuldade(sis.getTempoDaPartida(dificuldade));
+    	jogador1 = new Jogador(nomeJogador1);
+    	jogador2 = new Jogador(nomeJogador2);
+    	
+    	this.telaquestao = new TelaEscolherQuestao(this);
+    	telaquestao.criarTelaEscolherQuestao();
+    }
+    
+    
+    
+    
       
     public void proximaRodada() {
     	if(jogo.getNumQuestao() == 11) {    		
@@ -128,6 +154,7 @@ public class Controle {
     public void atualizarTempoDaTela() {
     	int tempoLocal = jogo.getTempoDaDificuldade();
     	jogo.setTempoDaResposta(tempoLocal);
+    	
     	if (timer != null) { timer.cancel(); }    	
     	
     	TimerTask timerTask = new TimerTask() {

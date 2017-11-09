@@ -237,9 +237,12 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
         	
         	controle.proximaRodada();
             }
-        else { 
-        	//controle.iniciarPartidaDoisJogadores();
-        }  
+        else if (jRadioButtonDoisJogadores.isSelected()) { 
+        	controle.iniciarPartidaDoisJogadores(
+        			jTextFieldNomeJogador1.getText(),
+        			jTextFieldNomeJogador2.getText(),
+        			verificarDificuldadeEscolhida());
+        }  else {}
     }//GEN-LAST:event_jButtonIniciarActionPerformed
 
     private String verificarOperacaoEscolhida() {
