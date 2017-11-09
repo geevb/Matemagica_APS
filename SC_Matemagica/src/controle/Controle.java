@@ -12,14 +12,7 @@ import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
-import br.ufsc.inf.leobr.cliente.Jogada;
-import br.ufsc.inf.leobr.cliente.OuvidorProxy;
-import br.ufsc.inf.leobr.cliente.Proxy;
-import br.ufsc.inf.leobr.cliente.exception.ArquivoMultiplayerException;
-import br.ufsc.inf.leobr.cliente.exception.JahConectadoException;
-import br.ufsc.inf.leobr.cliente.exception.NaoConectadoException;
-import br.ufsc.inf.leobr.cliente.exception.NaoJogandoException;
-import br.ufsc.inf.leobr.cliente.exception.NaoPossivelConectarException;
+
 
 import Modelo.*;
 import gui.*;
@@ -356,6 +349,11 @@ public class Controle {
     }
     ///////////////////////////////////////////////////////////
 
+    
+    public String criarStringCsvRanking() {
+    	return rnk.getRankingCsv();
+    }
+    
 	public ArrayList<Jogador> getRankingSoma() {
 		return rnk.getRankingSoma();
 	}
@@ -365,7 +363,7 @@ public class Controle {
 	}
 
 	public ArrayList<Jogador> getRankingMultiplicacao() {
-		return rnk.getRankingMultipliacao();
+		return rnk.getRankingMultiplicacao();
 	}
 
 	public ArrayList<Jogador> getRankingDivisao() {

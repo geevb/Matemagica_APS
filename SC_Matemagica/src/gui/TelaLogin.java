@@ -40,7 +40,7 @@ public class TelaLogin extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                                               
     private void initComponents() {
-
+    	
         jPanel1 = new javax.swing.JPanel();
         jLabelSenha = new javax.swing.JLabel();
         jTextSenha = new javax.swing.JPasswordField();
@@ -58,8 +58,7 @@ public class TelaLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Matemágica");
         setResizable(false);
-        setSize(new java.awt.Dimension(800, 600));
-
+        getContentPane().setSize(new java.awt.Dimension(800, 600));
         
         jLabelSenha.setText("Senha:");
 

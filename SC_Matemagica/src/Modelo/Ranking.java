@@ -187,6 +187,30 @@ public class Ranking implements Serializable {
 		return -1;
 	}
 
+	public String getRankingCsv() {
+		String titulo = "Ranking; \r\n";
+		String subTituloOperacoes = "Soma;Subtracao;Multiplicacao;Divisao;\r\n";
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(titulo);
+		sb.append(subTituloOperacoes);
+		
+
+		
+		for(int i = 0; i < 5; i++) {
+			sb.append(getRankingSoma().get(i).getNome() + ";");
+			sb.append(getRankingSubtracao().get(i).getNome() + ";");
+			sb.append(getRankingMultiplicacao().get(i).getNome() + ";");
+			sb.append(getRankingDivisao().get(i).getNome() + ";");
+			sb.append("\r\n");
+		}
+		
+		System.out.println(sb.toString());
+		return sb.toString();
+		
+		
+	}
+	
 	public ArrayList<Jogador> getRankingSoma() {
 		return rnkSoma;
 	}
@@ -195,7 +219,8 @@ public class Ranking implements Serializable {
 		return rnkSubtracao;
 	}
 
-	public ArrayList<Jogador> getRankingMultipliacao() {
+	
+	public ArrayList<Jogador> getRankingMultiplicacao() {
 		return rnkMultiplicacao;
 	}
 

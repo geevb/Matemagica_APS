@@ -31,11 +31,11 @@ public class TelaPontuacaoFinal extends javax.swing.JFrame {
         jLabelParabensTenteDenovo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelParabensTenteDenovo.setText("Tente mais uma vez!");
 
-        jLabelNomeDoJogador.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabelNomeDoJogador.setFont(new java.awt.Font("Dialog", 1, 50)); // NOI18N
         jLabelNomeDoJogador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNomeDoJogador.setText("Nome do Jogador");
 
-        jLabelPontuacao.setFont(new java.awt.Font("Dialog", 3, 40)); // NOI18N
+        jLabelPontuacao.setFont(new java.awt.Font("Dialog", 3, 42)); // NOI18N
         jLabelPontuacao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPontuacao.setText("9999");
 
@@ -43,7 +43,7 @@ public class TelaPontuacaoFinal extends javax.swing.JFrame {
         jLabelPontos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelPontos.setText("pontos");
 
-        jButtonContinuar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jButtonContinuar.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jButtonContinuar.setText("Continuar");
         jButtonContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,23 +65,23 @@ public class TelaPontuacaoFinal extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(306, 306, 306))
+                .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(273, 273, 273))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelParabensTenteDenovo, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addGap(66, 66, 66)
                 .addComponent(jLabelNomeDoJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(41, 41, 41)
                 .addComponent(jLabelPontuacao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabelPontos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addComponent(jButtonContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
 
         pack();
@@ -97,7 +97,7 @@ public class TelaPontuacaoFinal extends javax.swing.JFrame {
         jLabelPontuacao.setText(pontuacaoFinal);
         
         if(entrouNoRanking){
-            jLabelParabensTenteDenovo.setText("Novo Recorde! Parabéns pela pontuação!");
+            jLabelParabensTenteDenovo.setText("Novo Recorde!");
         } else {
             jLabelParabensTenteDenovo.setText("Tente mais uma vez!");
         }
