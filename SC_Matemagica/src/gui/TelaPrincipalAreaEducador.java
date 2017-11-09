@@ -8,6 +8,7 @@ package gui;
 import controle.Controle;
 import java.io.File;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileSystemView;
 
 public class TelaPrincipalAreaEducador extends javax.swing.JFrame {
 
@@ -122,11 +123,6 @@ public class TelaPrincipalAreaEducador extends javax.swing.JFrame {
         new TelaLogin(controle).setVisible(true);
     }                                        
     
-    // BOTAO GERAR RELATORIO
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     // BOTAO CONFIGURACAO
     private void jButtonConfigurarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfigurarSistemaActionPerformed
         this.dispose();
@@ -134,11 +130,18 @@ public class TelaPrincipalAreaEducador extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfigurarSistemaActionPerformed
 
     private void jButtonGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerarRelatorioActionPerformed
-       int returnVal = fc.showSaveDialog(TelaPrincipalAreaEducador.this);
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                File file = fc.getSelectedFile();
-            }
-                //This is where a real application would save the file.
+   	
+    	JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
+		jfc.setDialogTitle("Choose a directory to save your file: ");
+		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+		int returnValue = jfc.showSaveDialog(null);
+		if (returnValue == JFileChooser.APPROVE_OPTION) {
+			if (jfc.getSelectedFile().isDirectory()) {
+				System.out.println("You selected the directory: " + jfc.getSelectedFile());
+				controle.salvarCsv(String.valueOf(jfc.getSelectedFile()));
+			}
+		}                
     }//GEN-LAST:event_jButtonGerarRelatorioActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

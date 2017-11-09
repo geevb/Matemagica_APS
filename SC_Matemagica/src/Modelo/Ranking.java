@@ -8,10 +8,13 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 
 
@@ -226,6 +229,19 @@ public class Ranking implements Serializable {
 
 	public ArrayList<Jogador> getRankingDivisao() {
 		return rnkDivisao;
+	}
+
+
+
+	public void salvarRankingsCsv(String destinoArquivo) {
+		String nomeFinalDoArquivo = destinoArquivo + "/" + "RelatorioRankings.csv";
+		System.out.println(nomeFinalDoArquivo);
+        try {
+			Files.write(Paths.get(nomeFinalDoArquivo), getRankingCsv().getBytes());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 
 }

@@ -9,7 +9,7 @@ public class Main {
     	Controle ctr = new Controle();
         ctr.iniciarAplicacao();
         
-        System.out.println(ctr.criarStringCsvRanking());
+        //System.out.println(ctr.criarStringCsvRanking());
     }
     
 }

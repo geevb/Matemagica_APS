@@ -370,4 +370,8 @@ public class Controle {
 		return rnk.getRankingDivisao();
 	}
 
+	public void salvarCsv(String destinoArquivo) {
+		rnk.salvarRankingsCsv(destinoArquivo);		
+	}
+
 }
