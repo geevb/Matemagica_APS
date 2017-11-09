@@ -374,4 +374,8 @@ public class Controle {
 		rnk.salvarRankingsCsv(destinoArquivo);		
 	}
 
+	public void arquivoSalvoSucesso() {
+		msg.arquivoSalvoSucesso();		
+	}
+
 }

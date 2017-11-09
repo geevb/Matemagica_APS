@@ -120,7 +120,6 @@ public class Ranking implements Serializable {
 	}
 
 	public void fluxoRanking(Jogador jogador, int cod_ranking) {
-		
 			
 		// Verificar se o jogador entrar no Ranking respectivo ao código do ranking recebido
 		int posicaoDoNovoJogador = entraNoRanking(jogador, cod_ranking);
@@ -239,7 +238,6 @@ public class Ranking implements Serializable {
         try {
 			Files.write(Paths.get(nomeFinalDoArquivo), getRankingCsv().getBytes());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 	}

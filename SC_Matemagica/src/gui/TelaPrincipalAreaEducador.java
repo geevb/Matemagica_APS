@@ -132,14 +132,14 @@ public class TelaPrincipalAreaEducador extends javax.swing.JFrame {
     private void jButtonGerarRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGerarRelatorioActionPerformed
    	
     	JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-		jfc.setDialogTitle("Choose a directory to save your file: ");
+		jfc.setDialogTitle("Aonde deseja salvar o relatório?");
 		jfc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
 		int returnValue = jfc.showSaveDialog(null);
 		if (returnValue == JFileChooser.APPROVE_OPTION) {
 			if (jfc.getSelectedFile().isDirectory()) {
-				System.out.println("You selected the directory: " + jfc.getSelectedFile());
 				controle.salvarCsv(String.valueOf(jfc.getSelectedFile()));
+				controle.arquivoSalvoSucesso();
 			}
 		}                
     }//GEN-LAST:event_jButtonGerarRelatorioActionPerformed

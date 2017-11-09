@@ -65,9 +65,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButtonOpAnterior" min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="jButtonExplAnterior" min="-2" pref="70" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonOpProx" min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="jButtonExplProximo" min="-2" pref="70" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="238" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -92,9 +92,9 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButtonExAnterior" min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="jButtonExeAnterior" min="-2" pref="70" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonExProx" min="-2" pref="70" max="-2" attributes="0"/>
+                              <Component id="jButtonExeProx" min="-2" pref="70" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="jButtonSair" min="-2" pref="80" max="-2" attributes="0"/>
                           </Group>
@@ -130,8 +130,8 @@
                       <Component id="jLabelPicExplicacao" min="-2" pref="330" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonOpProx" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jButtonOpAnterior" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jButtonExplProximo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jButtonExplAnterior" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -140,8 +140,8 @@
                       <Component id="jLabelPicExemplo" min="-2" pref="330" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonExAnterior" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jButtonExProx" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jButtonExeAnterior" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jButtonExeProx" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="jButtonSair" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -243,25 +243,37 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSairActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonOpProx">
+    <Component class="javax.swing.JButton" name="jButtonExplProximo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pr&#xf3;x."/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExplProximoActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonOpAnterior">
+    <Component class="javax.swing.JButton" name="jButtonExplAnterior">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ant."/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExplAnteriorActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonExAnterior">
+    <Component class="javax.swing.JButton" name="jButtonExeAnterior">
       <Properties>
         <Property name="text" type="java.lang.String" value="Ant."/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExeAnteriorActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonExProx">
+    <Component class="javax.swing.JButton" name="jButtonExeProx">
       <Properties>
         <Property name="text" type="java.lang.String" value="Pr&#xf3;x."/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExeProxActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelPicExemplo">
       <Properties>

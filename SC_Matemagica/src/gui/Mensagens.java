@@ -24,5 +24,10 @@ public class Mensagens {
 	public void msgBemVindo() {
 		JOptionPane.showMessageDialog(null,"Seja bem vindo ao Matemágica!");		
 	}
+
+	public void arquivoSalvoSucesso() {
+		JOptionPane.showMessageDialog(null, "Arquivo salvo com sucesso!");
+		
+	}
     
 }
