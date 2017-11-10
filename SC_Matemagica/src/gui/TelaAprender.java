@@ -17,12 +17,17 @@ public class TelaAprender extends javax.swing.JFrame {
 	private int numeroImagem = 0;
 	private String imagemExplSendoVista = "";
 	private String imagemExeSendoVista = "";
-	private ArrayList<String> imagensAdicaoExpl = new ArrayList<String>();
-	private ArrayList<String> imagensAdicaoExe = new ArrayList<String>();
+	private ArrayList<String> imagensAdicaoExpl;
+	private ArrayList<String> imagensAdicaoExe;
 	
-	private ArrayList<String> imagensSubtracao;
-	private ArrayList<String> imagensMultiplicacao;
-	private ArrayList<String> imagensDivisao;
+	private ArrayList<String> imagensSubtracaoExpl;
+	private ArrayList<String> imagensSubtracaoExe;
+	
+	private ArrayList<String> imagensMultiplicacaoExpl;
+	private ArrayList<String> imagensMultiplicacaoExe;
+	
+	private ArrayList<String> imagensDivisaoExpl;
+	private ArrayList<String> imagensDivisaoExe;
 	
 
 
@@ -351,6 +356,18 @@ public class TelaAprender extends javax.swing.JFrame {
     }
     
     private void preencherArrays() {
+    	imagensAdicaoExpl = new ArrayList<String>();
+    	imagensAdicaoExe = new ArrayList<String>();
+    	
+    	imagensSubtracaoExpl = new ArrayList<String>();
+    	imagensSubtracaoExe = new ArrayList<String>();
+    	
+    	imagensMultiplicacaoExpl = new ArrayList<String>();
+    	imagensMultiplicacaoExe = new ArrayList<String>();
+    	
+    	imagensDivisaoExpl = new ArrayList<String>();
+    	imagensDivisaoExe = new ArrayList<String>();
+    	
     	String source_path = "/imgs/";
     	imagensAdicaoExe.add(source_path + "adicaoExe");
     	imagensAdicaoExpl.add(source_path + "adicao");
