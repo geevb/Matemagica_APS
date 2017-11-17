@@ -207,10 +207,8 @@ public class Ranking implements Serializable {
 			sb.append("\r\n");
 		}
 		
-		System.out.println(sb.toString());
-		return sb.toString();
-		
-		
+
+		return sb.toString();		
 	}
 	
 	public ArrayList<Jogador> getRankingSoma() {
