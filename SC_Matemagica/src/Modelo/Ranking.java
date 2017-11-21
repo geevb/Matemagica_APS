@@ -198,7 +198,6 @@ public class Ranking implements Serializable {
 		sb.append(subTituloOperacoes);
 		
 
-		
 		for(int i = 0; i < 5; i++) {
 			sb.append(getRankingSoma().get(i).getNome() + ";");
 			sb.append(getRankingSubtracao().get(i).getNome() + ";");
@@ -227,7 +226,6 @@ public class Ranking implements Serializable {
 	public ArrayList<Jogador> getRankingDivisao() {
 		return rnkDivisao;
 	}
-
 
 
 	public void salvarRankingsCsv(String destinoArquivo) {

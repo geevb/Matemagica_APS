@@ -36,8 +36,8 @@ public class Questao {
 	
 	private String verificarSimboloOp(String nomeOperacao) {
 		if (nomeOperacao.equals("(+)Adição")) { return "+"; }
-		else if (nomeOperacao.equals("(-)Subtração")) { return "-"; }
-		else if (nomeOperacao.equals("(x)Multiplicação")) { return "x"; }
+			else if (nomeOperacao.equals("(-)Subtração")) { return "-"; }
+				else if (nomeOperacao.equals("(x)Multiplicação")) { return "x"; }
 		else { return "÷"; }
 	}
 

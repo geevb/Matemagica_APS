@@ -9,8 +9,8 @@ public class Jogador implements Serializable {
 	protected int pontuacao = 0;
 	
 	public Jogador(String nomeJogador) {
-            this.nome = nomeJogador;
-        }
+        this.nome = nomeJogador;
+    }
 	
 	public void pontuar(int pontos) {
 		pontuacao = pontuacao + pontos;		
