@@ -21,8 +21,8 @@ public class Questao {
 	}
 	
 	public Questao criarQuestaoFacil(String operacao) {
-		int randomNumEsq = ThreadLocalRandom.current().nextInt(0, 10 + 1);
-		int randomNumDir = ThreadLocalRandom.current().nextInt(0, 10 + 1);
+		int randomNumEsq = ThreadLocalRandom.current().nextInt(0, 9 + 1);
+		int randomNumDir = ThreadLocalRandom.current().nextInt(0, 9 + 1);
 		int resposta = verificarEExecutarOperacao(operacao, randomNumEsq, randomNumDir);
 		String simboloOp = verificarSimboloOp(operacao);
 		
@@ -60,7 +60,6 @@ public class Questao {
 		return simboloOperacao;
 	}
 
-	//DOCUMENTAR REGRA DE GERAÇÃO DE PERGUNTAS FACIL/MEDIO/DIFICIL NO EA
 	public Questao criarQuestaoDificil(String operacao) {
 		int randomNumEsq = ThreadLocalRandom.current().nextInt(0, 100 + 1);
 		int randomNumDir = ThreadLocalRandom.current().nextInt(0, 100 + 1);

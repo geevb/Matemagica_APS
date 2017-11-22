@@ -16,6 +16,10 @@ public class Jogo {
 		this.tempoDaResposta = 0;
 	}
 
+	public void finalizar() {
+		zerarAtributos();
+	}
+	
 	public int retornarCodigoDaPartidaAtual() {
 		if (operacao.equals("(+)Adição")) return 1;
 		else if (operacao.equals("(-)Subtração")) return 2;
@@ -50,6 +54,11 @@ public class Jogo {
 	
 	public String getDificuldade() {
 		return dificuldade;
+	}
+	
+	public void iniciarPartida(String dificuldade, int tempoDaResposta) {		
+		this.dificuldade = dificuldade;
+		this.tempoDaResposta = tempoDaResposta;
 	}
 
 	public void setDificuldade(String dificuldade) {

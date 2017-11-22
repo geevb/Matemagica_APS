@@ -14,8 +14,6 @@ import controle.Controle;
 public class TelaAprender extends javax.swing.JFrame {
 
 	private int numeroImagem = 0;
-	private String imagemExplSendoVista = "";
-	private String imagemExeSendoVista = "";
 	
 	private ArrayList<String> imagensSendoVistasExpl;
 	private ArrayList<String> imagensSendoVistasExe;
@@ -136,8 +134,8 @@ public class TelaAprender extends javax.swing.JFrame {
 			}
 		});
 
-		jLabelPicExemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/imgEx"))); // NOI18N
-		jLabelPicExplicacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/imgEx"))); // NOI18N
+//		jLabelPicExemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/imgEx"))); // NOI18N
+//		jLabelPicExplicacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/imgEx"))); // NOI18N
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
@@ -275,7 +273,7 @@ public class TelaAprender extends javax.swing.JFrame {
 
 	private void jButtonAdicaoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonAdicaoActionPerformed
 		String imagem_path = "/imgs/adicao";
-		String imagem_path_exemplo = "/imgs/adicao1";
+		String imagem_path_exemplo = "/imgs/adicaoExe";
 
 		preencherArrays("adicao");		
 		setNumeroImagem(0);
@@ -297,10 +295,12 @@ public class TelaAprender extends javax.swing.JFrame {
 	}// GEN-LAST:event_jButtonSubtracaoActionPerformed
 
 	private void jButtonMultiplicacaoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonMultiplicacaoActionPerformed
+		preencherArrays("multiplicacao");	
 		setNumeroImagem(0);
 	}// GEN-LAST:event_jButtonMultiplicacaoActionPerformed
 
 	private void jButtonDivisaoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonDivisaoActionPerformed
+		preencherArrays("divisao");	
 		setNumeroImagem(0);
 	}// GEN-LAST:event_jButtonDivisaoActionPerformed
 
@@ -362,14 +362,6 @@ public class TelaAprender extends javax.swing.JFrame {
 
 	public int getNumeroImagem() {
 		return numeroImagem;
-	}
-
-	public String getImagemExplSendoVista() {
-		return imagemExplSendoVista;
-	}
-
-	public String getImagemExeSendoVista() {
-		return imagemExeSendoVista;
 	}
 
 	private void preencherArrays(String tipoImagem) {

@@ -7,6 +7,7 @@ package gui;
 
 import controle.Controle;
 
+@SuppressWarnings("unused")
 public class TelaEscolherQuestao extends javax.swing.JFrame {
 
 	Controle controle;
@@ -60,28 +61,28 @@ public class TelaEscolherQuestao extends javax.swing.JFrame {
         jButton1.setText("jButton1");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButtonPrimeiraOpActionPerformed(evt);
             }
         });
 
         jButton2.setText("jButton2");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jButtonSegundaOpActionPerformed(evt);
             }
         });
 
         jButton4.setText("jButton4");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                jButtonQuartaOpActionPerformed(evt);
             }
         });
 
         jButton3.setText("jButton3");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButtonTerceiraOpActionPerformed(evt);
             }
         });
 
@@ -92,26 +93,6 @@ public class TelaEscolherQuestao extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup.add(jRadioButtonSubtracao);
-        jRadioButtonSubtracao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonSubtracaoActionPerformed(evt);
-            }
-        });
-
-        buttonGroup.add(jRadioButtonMultiplicacao);
-        jRadioButtonMultiplicacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonMultiplicacaoActionPerformed(evt);
-            }
-        });
-
-        buttonGroup.add(jRadioButtonDivisao);
-        jRadioButtonDivisao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonDivisaoActionPerformed(evt);
-            }
-        });
 
         jLabelAdicao.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabelAdicao.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -239,35 +220,23 @@ public class TelaEscolherQuestao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButtonAdicaoActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonPrimeiraOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButtonSegundaOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jButtonTerceiraOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void jButtonQuartaOpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jRadioButtonSubtracaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonSubtracaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonSubtracaoActionPerformed
-
-    private void jRadioButtonMultiplicacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonMultiplicacaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonMultiplicacaoActionPerformed
-
-    private void jRadioButtonDivisaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonDivisaoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonDivisaoActionPerformed
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JButton jButton1;

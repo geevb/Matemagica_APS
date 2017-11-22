@@ -19,20 +19,20 @@ import gui.*;
 
 public class Controle {
     
-    protected Sistema sis;
-    protected Mensagens msg;
-    protected Ranking rnk;
-    protected Questao qst;
-    protected Jogo jogo;
-    protected TelaJogo jogogui;
-    protected TelaEscolherQuestao telaquestao;
-    protected Jogador jogador1;
-    protected Jogador jogador2;
-    protected Timer timer;
-    
-    
+    private Sistema sis;
+    private Mensagens msg;
+    private Ranking rnk;
+    private Questao qst;
+    private Jogo jogo;
+    private TelaJogo jogogui;
+    private TelaEscolherQuestao telaquestao;
+    private Jogador jogador1;
+    private Jogador jogador2;
+    private Timer timer;   
     
     private boolean partidaFinalizada = false;
+    
+    
     
     public Controle() {
 
@@ -105,17 +105,13 @@ public class Controle {
     public void iniciarPartidaDoisJogadores(String nomeJogador1, String nomeJogador2, String dificuldade) {
     	setPartidaFinalizada(false);
     	this.jogo = new Jogo();
-    	jogo.setDificuldade(dificuldade);
-    	jogo.setTempoDaDificuldade(sis.getTempoDaPartida(dificuldade));
+    	jogo.iniciarPartida(dificuldade, sis.getTempoDaPartida(dificuldade));
     	jogador1 = new Jogador(nomeJogador1);
     	jogador2 = new Jogador(nomeJogador2);
     	
     	this.telaquestao = new TelaEscolherQuestao(this);
     	telaquestao.criarTelaEscolherQuestao();
     }
-    
-    
-    
     
       
     public void proximaRodada() {

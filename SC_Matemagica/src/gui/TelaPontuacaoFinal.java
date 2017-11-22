@@ -8,6 +8,7 @@ public class TelaPontuacaoFinal extends javax.swing.JFrame {
 
     Controle controle;    
     
+    
 
     public TelaPontuacaoFinal(Controle controle) {
         this.controle = controle;

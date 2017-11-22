@@ -22,11 +22,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
 	Controle controle;
 	private String path_to_background = "images/telaLogin.png";
+
 	
-	public TelaLogin() {
-		initComponents();
-	};
-    
     public TelaLogin(Controle ctr) {
         this.controle = ctr;
         initComponents();
@@ -48,7 +45,7 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelTipoUsuario = new javax.swing.JLabel();
         jLabelSejaBemVindo = new javax.swing.JLabel();
         jLabelMatemagica = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jButtonEntrar = new javax.swing.JButton();
         //JLabel background = new JLabel();
         //background.setOpaque(true);
         //background.setForeground(Color.GREEN);
@@ -103,9 +100,9 @@ public class TelaLogin extends javax.swing.JFrame {
         jLabelMatemagica.setFont(new java.awt.Font("Tahoma", 3, 62)); // NOI18N
         jLabelMatemagica.setText("Matemágica!");
 
-        jButton1.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        jButton1.setText("Entrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEntrar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
+        jButtonEntrar.setText("Entrar");
+        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLoginActionPerformed(evt);
             }
@@ -130,7 +127,7 @@ public class TelaLogin extends javax.swing.JFrame {
                         .addComponent(jLabelMatemagica)
                         .addGap(149, 149, 149))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(311, 311, 311))))
         );
         layout.setVerticalGroup(
@@ -143,7 +140,7 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20))
         );
 
@@ -175,7 +172,7 @@ public class TelaLogin extends javax.swing.JFrame {
     }                                                                                                      
 
     // Variables declaration - do not modify                                     
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonEntrar;
     private javax.swing.JComboBox<String> jComboBoxNomeTipoUsuario;
     private javax.swing.JLabel jLabelMatemagica;
     private javax.swing.JLabel jLabelSejaBemVindo;
@@ -185,4 +182,5 @@ public class TelaLogin extends javax.swing.JFrame {
     private javax.swing.JPasswordField jTextSenha;
     // End of variables declaration                   
 }
+
 

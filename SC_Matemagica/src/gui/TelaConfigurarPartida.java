@@ -127,12 +127,6 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
         jLabelNomeJogador.setText("Nome do  Jogador: ");
 
         jTextFieldNomeJogador1.setText("Jogador 1");
-        jTextFieldNomeJogador1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNomeJogador1ActionPerformed(evt);
-            }
-        });
-
         jTextFieldNomeJogador2.setText("Jogador 2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -291,9 +285,6 @@ public class TelaConfigurarPartida extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButtonSairActionPerformed
 
-    private void jTextFieldNomeJogador1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeJogador1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomeJogador1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
