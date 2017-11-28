@@ -3,17 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/geevb/Documents/repos/Matemagica_APS/SC_Matemagica/src/gui/TelaPontuacaoFinal.java</file>
-            <file>file:/home/geevb/Documents/repos/Matemagica_APS/SC_Matemagica/nbproject/build-impl.xml</file>
-            <file>file:/home/geevb/Documents/repos/Matemagica_APS/SC_Matemagica/src/Modelo/Sistema.java</file>
-            <file>file:/home/geevb/Documents/repos/Matemagica_APS/SC_Matemagica/src/Modelo/Jogo.java</file>
-            <file>file:/home/geevb/Documents/repos/Matemagica_APS/SC_Matemagica/src/Modelo/Jogador.java</file>
-            <file>file:/home/geevb/Documents/repos/Matemagica_APS/SC_Matemagica/src/gui/TelaAprender.java</file>
-            <file>file:/home/geevb/Documents/repos/Matemagica_APS/SC_Matemagica/src/controle/Controle.java</file>
-            <file>file:/home/geevb/Documents/repos/Matemagica_APS/SC_Matemagica/src/gui/TelaEscolherQuestao.java</file>
-            <file>file:/home/geevb/Documents/repos/Matemagica_APS/SC_Matemagica/src/gui/TelaConfigurarPartida.java</file>
-            <file>file:/home/geevb/Documents/repos/Matemagica_APS/SC_Matemagica/src/controle/Main.java</file>
-            <file>file:/home/geevb/Documents/repos/Matemagica_APS/SC_Matemagica/src/Modelo/Ranking.java</file>
+            <file>file:/C:/Users/Gee/Documents/Repos%20GIT/Matemagica_APS/SC_Matemagica/src/gui/TelaLogin.java</file>
+            <file>file:/C:/Users/Gee/Documents/Repos%20GIT/Matemagica_APS/SC_Matemagica/src/gui/TelaConfigurarPartida.java</file>
+            <file>file:/C:/Users/Gee/Documents/Repos%20GIT/Matemagica_APS/SC_Matemagica/src/gui/TelaAprender.java</file>
+            <file>file:/C:/Users/Gee/Documents/Repos%20GIT/Matemagica_APS/SC_Matemagica/src/gui/TelaConfiguracoesAreaEducador.java</file>
         </group>
     </open-files>
 </project-private>

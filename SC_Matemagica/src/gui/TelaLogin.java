@@ -21,7 +21,8 @@ public class TelaLogin extends javax.swing.JFrame {
 
 
 	Controle controle;
-	private String path_to_background = "images/telaLogin.png";
+
+
 
 	
     public TelaLogin(Controle ctr) {
@@ -59,7 +60,7 @@ public class TelaLogin extends javax.swing.JFrame {
         
         jLabelSenha.setText("Senha:");
 
-        jComboBoxNomeTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Educador", "Jogador" }));
+        jComboBoxNomeTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Educador", "Aluno" }));
         jComboBoxNomeTipoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxNomeTipoUsuarioActionPerformed(evt);
@@ -99,6 +100,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
         jLabelMatemagica.setFont(new java.awt.Font("Tahoma", 3, 62)); // NOI18N
         jLabelMatemagica.setText("Matemágica!");
+        
 
         jButtonEntrar.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         jButtonEntrar.setText("Entrar");
@@ -121,14 +123,14 @@ public class TelaLogin extends javax.swing.JFrame {
                 .addComponent(jLabelSejaBemVindo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(153, Short.MAX_VALUE)
+                .addContainerGap(170, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabelMatemagica)
                         .addGap(149, 149, 149))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(311, 311, 311))))
+                        .addComponent(jButtonEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(260, 260, 260))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,6 +147,7 @@ public class TelaLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>                                                
     
    
@@ -160,7 +163,7 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void jComboBoxNomeTipoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {                                                                                                                  
         // TODO add your handling code here:
-        if(jComboBoxNomeTipoUsuario.getSelectedItem().equals("Jogador")){
+        if(jComboBoxNomeTipoUsuario.getSelectedItem().equals("Aluno")){
             jTextSenha.setVisible(false);
             jLabelSenha.setVisible(false);
         }

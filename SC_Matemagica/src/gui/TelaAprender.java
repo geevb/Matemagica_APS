@@ -14,7 +14,10 @@ import controle.Controle;
 public class TelaAprender extends javax.swing.JFrame {
 
 	private int numeroImagem = 0;
+	private int numeroImagemExe = 0;
 	
+
+
 	private ArrayList<String> imagensSendoVistasExpl;
 	private ArrayList<String> imagensSendoVistasExe;
 	
@@ -269,6 +272,7 @@ public class TelaAprender extends javax.swing.JFrame {
 				.addContainerGap()));
 
 		pack();
+		setLocationRelativeTo(null);
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void jButtonAdicaoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonAdicaoActionPerformed
@@ -347,35 +351,33 @@ public class TelaAprender extends javax.swing.JFrame {
 	}// GEN-LAST:event_jButtonExplProximoActionPerformed
 
 	private void jButtonExeAnteriorActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonExeAnteriorActionPerformed
-		if (numeroImagem == 0) {
-			setNumeroImagem(imagensSendoVistasExe.size() - 1);
+		if (numeroImagemExe == 0) {
+			setNumeroImagemExe(imagensSendoVistasExe.size() - 1);
 		} else {
-			imagemAnterior();
+			imagemAnteriorExe();
 		}
 
-		System.out.println("Imagem: " + numeroImagem);
-		String pathImagem = imagensSendoVistasExe.get(getNumeroImagem());
+		System.out.println("Imagem: " + numeroImagemExe);
+		String pathImagem = imagensSendoVistasExe.get(getNumeroImagemExe());
 		System.out.println(pathImagem);
 		jLabelPicExemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource(pathImagem)));
 	}// GEN-LAST:event_jButtonExeAnteriorActionPerformed
 
 	private void jButtonExeProxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonExeProxActionPerformed
-		if (numeroImagem == imagensSendoVistasExe.size() - 1) {
-			setNumeroImagem(0);
+		if (numeroImagemExe == imagensSendoVistasExe.size() - 1) {
+			setNumeroImagemExe(0);
 		} else {
-			proximaImagem();
+			proximaImagemExe();
 		}
 
-		System.out.println("Imagem: " + numeroImagem);
-		String pathImagem = imagensSendoVistasExe.get(getNumeroImagem());
+		System.out.println("Imagem: " + numeroImagemExe);
+		String pathImagem = imagensSendoVistasExe.get(getNumeroImagemExe());
 		System.out.println(pathImagem);
 		jLabelPicExemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource(pathImagem)));
 	}// GEN-LAST:event_jButtonExeProxActionPerformed
 
 
-	private void setNumeroImagem(int num) {
-		this.numeroImagem = num;
-	}
+
 
 	private void proximaImagem() {
 		this.numeroImagem++;
@@ -385,10 +387,33 @@ public class TelaAprender extends javax.swing.JFrame {
 		this.numeroImagem--;
 	}
 
+	
+	private void setNumeroImagem(int num) {
+		this.numeroImagem = num;
+	}
+	
 	public int getNumeroImagem() {
 		return numeroImagem;
 	}
 
+	public int getNumeroImagemExe() {
+		return numeroImagemExe;
+	}
+
+	public void setNumeroImagemExe(int numeroImagemExe) {
+		this.numeroImagemExe = numeroImagemExe;
+	}
+	
+	private void proximaImagemExe() {
+		this.numeroImagemExe++;
+	}
+
+	private void imagemAnteriorExe() {
+		this.numeroImagemExe--;
+	}
+
+	
+	
 	private void preencherArrays(String tipoImagem) {
 		
 		String source_path = "/imgs/";

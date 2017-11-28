@@ -294,7 +294,7 @@ public class Controle {
     
     public boolean efetuarLogin(String tipoUsuario, char[] senha){
 
-    	if(tipoUsuario.equals("Jogador")){
+    	if(tipoUsuario.equals("Aluno")){
             //msg.msgBemVindo();
             iniciarAreaAluno();
             return true;
