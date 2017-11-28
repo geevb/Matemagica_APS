@@ -199,10 +199,10 @@ public class Ranking implements Serializable {
 		
 
 		for(int i = 0; i < 5; i++) {
-			sb.append(getRankingSoma().get(i).getNome() + ";");
-			sb.append(getRankingSubtracao().get(i).getNome() + ";");
-			sb.append(getRankingMultiplicacao().get(i).getNome() + ";");
-			sb.append(getRankingDivisao().get(i).getNome() + ";");
+			if (i < getRankingSoma().size()) sb.append(getRankingSoma().get(i).getNome() + ";");
+			if (i < getRankingSubtracao().size()) sb.append(getRankingSubtracao().get(i).getNome() + ";");
+			if (i < getRankingMultiplicacao().size()) sb.append(getRankingMultiplicacao().get(i).getNome() + ";");
+			if (i < getRankingDivisao().size()) sb.append(getRankingDivisao().get(i).getNome() + ";");
 			sb.append("\r\n");
 		}
 		

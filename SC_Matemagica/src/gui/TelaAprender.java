@@ -284,8 +284,8 @@ public class TelaAprender extends javax.swing.JFrame {
 	}// GEN-LAST:event_jButtonAdicaoActionPerformed
 
 	private void jButtonSubtracaoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonSubtracaoActionPerformed
-		String imagem_path = "/imgs/leru";
-		String imagem_path_exemplo = "/imgs/leru";
+		String imagem_path = "/imgs/subtracao";
+		String imagem_path_exemplo = "/imgs/subtracaoExe";
 
 		preencherArrays("subtracao");		
 		setNumeroImagem(0);
@@ -295,13 +295,23 @@ public class TelaAprender extends javax.swing.JFrame {
 	}// GEN-LAST:event_jButtonSubtracaoActionPerformed
 
 	private void jButtonMultiplicacaoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonMultiplicacaoActionPerformed
+		String imagem_path = "/imgs/multiplicacao";
+		String imagem_path_exemplo = "/imgs/multiplicacaoExe";
+		
 		preencherArrays("multiplicacao");	
 		setNumeroImagem(0);
+		jLabelPicExemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagem_path_exemplo)));
+		jLabelPicExplicacao.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagem_path))); // NOI18N
 	}// GEN-LAST:event_jButtonMultiplicacaoActionPerformed
 
 	private void jButtonDivisaoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonDivisaoActionPerformed
+		String imagem_path = "/imgs/divisao";
+		String imagem_path_exemplo = "/imgs/divisaoExe";
+		
 		preencherArrays("divisao");	
 		setNumeroImagem(0);
+		//jLabelPicExemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagem_path_exemplo)));
+		jLabelPicExplicacao.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagem_path))); // NOI18N
 	}// GEN-LAST:event_jButtonDivisaoActionPerformed
 
 	private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonSairActionPerformed
@@ -333,20 +343,35 @@ public class TelaAprender extends javax.swing.JFrame {
 		System.out.println("Imagem: " + numeroImagem);
 		String pathImagem = imagensSendoVistasExpl.get(getNumeroImagem());
 		System.out.println(pathImagem);
-
 		jLabelPicExplicacao.setIcon(new javax.swing.ImageIcon(getClass().getResource(pathImagem)));
 	}// GEN-LAST:event_jButtonExplProximoActionPerformed
 
 	private void jButtonExeAnteriorActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonExeAnteriorActionPerformed
+		if (numeroImagem == 0) {
+			setNumeroImagem(imagensSendoVistasExe.size() - 1);
+		} else {
+			imagemAnterior();
+		}
 
+		System.out.println("Imagem: " + numeroImagem);
+		String pathImagem = imagensSendoVistasExe.get(getNumeroImagem());
+		System.out.println(pathImagem);
+		jLabelPicExemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource(pathImagem)));
 	}// GEN-LAST:event_jButtonExeAnteriorActionPerformed
 
 	private void jButtonExeProxActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButtonExeProxActionPerformed
-		// TODO add your handling code here:
+		if (numeroImagem == imagensSendoVistasExe.size() - 1) {
+			setNumeroImagem(0);
+		} else {
+			proximaImagem();
+		}
+
+		System.out.println("Imagem: " + numeroImagem);
+		String pathImagem = imagensSendoVistasExe.get(getNumeroImagem());
+		System.out.println(pathImagem);
+		jLabelPicExemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource(pathImagem)));
 	}// GEN-LAST:event_jButtonExeProxActionPerformed
 
-	// jTextAreaExplicacao.setText("Kek\n\nYolo\n\nLeru\n\nNice\n\nGG\n\nIZI\n\nMAH
-	// BOY\n\nblob\n\nYay\n\nZZ");
 
 	private void setNumeroImagem(int num) {
 		this.numeroImagem = num;
@@ -374,12 +399,27 @@ public class TelaAprender extends javax.swing.JFrame {
 		if (tipoImagem.equals("adicao")) {
 			
 			imagensSendoVistasExe.add(source_path + "adicaoExe");
+			imagensSendoVistasExe.add(source_path + "adicaoExe1");
 			imagensSendoVistasExpl.add(source_path + "adicao");
 			imagensSendoVistasExpl.add(source_path + "adicao1");
 			
 		}
-		else if (tipoImagem.equals("subtracao")) {}
-		else if (tipoImagem.equals("multiplicacao")) {}
+		
+		else if (tipoImagem.equals("subtracao")) {
+			imagensSendoVistasExe.add(source_path + "subtracaoExe");
+			imagensSendoVistasExe.add(source_path + "subtracaoExe1");
+			imagensSendoVistasExpl.add(source_path + "subtracao");
+			imagensSendoVistasExpl.add(source_path + "subtracao1");
+		}
+		
+		else if (tipoImagem.equals("multiplicacao")) {
+			imagensSendoVistasExe.add(source_path + "multiplicacaoExe");
+			imagensSendoVistasExe.add(source_path + "multiplicacaoExe1");
+			imagensSendoVistasExpl.add(source_path + "multiplicacao");
+			imagensSendoVistasExpl.add(source_path + "multiplicacao1");
+			imagensSendoVistasExpl.add(source_path + "multiplicacao2");	
+		}
+		
 		else if (tipoImagem.equals("divisao")) {}
 		else {}
 		
