@@ -31,7 +31,8 @@ public class Questao {
 				Integer.toString(randomNumDir),
 				operacao,
 				simboloOp,
-				Integer.toString(resposta));
+				Integer.toString(resposta)
+				);
 	}
 	
 	private String verificarSimboloOp(String nomeOperacao) {
@@ -52,7 +53,8 @@ public class Questao {
 				Integer.toString(randomNumDir),
 				operacao,
 				simboloOp,
-				Integer.toString(resposta));
+				Integer.toString(resposta)
+				);
 	
 	}
 
@@ -71,7 +73,8 @@ public class Questao {
 				Integer.toString(randomNumDir),
 				operacao,
 				simboloOp,
-				Integer.toString(resposta));
+				Integer.toString(resposta)
+				);
 	
 	}
 	
@@ -100,8 +103,8 @@ public class Questao {
 		int resposta = 0;		
 		
 		while(!divisaoInteira) {
-			randomNumEsq = ThreadLocalRandom.current().nextInt(0, 100 + 1);
-			randomNumDir = ThreadLocalRandom.current().nextInt(2, 100 + 1);
+			randomNumEsq = ThreadLocalRandom.current().nextInt(0, 50 + 1);
+			randomNumDir = ThreadLocalRandom.current().nextInt(1, 5 + 1);
 			
 			if (randomNumEsq % randomNumDir == 0){
 				divisaoInteira = true;
@@ -115,7 +118,8 @@ public class Questao {
 				Integer.toString(randomNumDir),
 				operacao,
 				"÷",
-				Integer.toString(resposta)); 		
+				Integer.toString(resposta)
+				); 		
 	}
 
 

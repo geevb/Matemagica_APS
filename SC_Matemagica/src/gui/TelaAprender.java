@@ -314,7 +314,7 @@ public class TelaAprender extends javax.swing.JFrame {
 		
 		preencherArrays("divisao");	
 		setNumeroImagem(0);
-		//jLabelPicExemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagem_path_exemplo)));
+		jLabelPicExemplo.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagem_path_exemplo)));
 		jLabelPicExplicacao.setIcon(new javax.swing.ImageIcon(getClass().getResource(imagem_path))); // NOI18N
 	}// GEN-LAST:event_jButtonDivisaoActionPerformed
 
@@ -445,7 +445,12 @@ public class TelaAprender extends javax.swing.JFrame {
 			imagensSendoVistasExpl.add(source_path + "multiplicacao2");	
 		}
 		
-		else if (tipoImagem.equals("divisao")) {}
+		else if (tipoImagem.equals("divisao")) {
+			imagensSendoVistasExe.add(source_path + "divisaoExe");
+			imagensSendoVistasExe.add(source_path + "divisaoExe1");
+			imagensSendoVistasExpl.add(source_path + "divisao");
+			imagensSendoVistasExpl.add(source_path + "divisao1");
+		}
 		else {}
 		
 	}

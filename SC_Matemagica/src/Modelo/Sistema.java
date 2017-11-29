@@ -23,8 +23,7 @@ public class Sistema {
     protected Scanner scan;
     
     private String PATH_ARQ_CONFIG = "config/sis.config";
-    //private File FILE_PATH_CONFIG = new File(PATH_ARQ_CONFIG);
-    private String configInicial = "1 1 1";
+    private String configInicial = "300 300 300";
 
     
     public Sistema() {}
