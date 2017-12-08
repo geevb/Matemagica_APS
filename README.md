@@ -25,4 +25,4 @@ Efetue o Git clone deste repositório, abra o projeto utilizando a IDE de prefer
 
 ## Acknowledgments
 
-* Agradecimentos a Fabiane Benitti pela aula e experiência compartilhada com a turma.
+* Agradecimentos à todos os envolvidos!
